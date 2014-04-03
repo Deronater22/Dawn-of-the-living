@@ -28,7 +28,7 @@ using namespace lcgl;
 
 static const worldCoord STARTING_PLAYER_POSITION (0, 0, 0);
 
-World::World(int w, int h) : worldSound ("ambient.wav"),
+World::World(int w, int h) : _worldTrack ("sounds//darksiege.mid"),_ambient("ambient.wav"),
 _explosionSound ("sounds/slimesplash.wav"), terrain (32, 1.0f),
 skybox_("media/desplain"), debug("Arial" ,25), 
 theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0)
@@ -48,7 +48,8 @@ theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0)
 	player.SetWorld (this); terrain.SetWorld(this);
 	player.SetTerrain(&terrain);
 
-	worldSound.loopForever ();	worldSound.play (); 
+	_worldTrack.loopForever ();	 _worldTrack.play (); //world music track
+	_ambient.loopForever    ();  _ambient.play();//ambient sounds
 
 	LoadWorld();
 

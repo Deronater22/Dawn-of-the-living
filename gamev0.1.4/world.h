@@ -52,8 +52,8 @@ private:
 	float timeStart;
 	float timeElapsed;
 
-	Sound	worldSound;				// the world ambient sound
-	  
+	Sound	_worldTrack;//worlds music track			
+	Sound	_ambient;// the world ambient sound
 	GUI		gui;
 	Terrain	terrain;	
 
