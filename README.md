@@ -12,17 +12,3 @@ Contributors: Dayyy-roon-paul aka: "walking beard?"
 Mad-mike-mcChickenNugget aka: "Dr. mike"
 
 JB-nuff-said aka: "Dr. meeheans best friend"
-=======
-
-Traverse through the desert and take revenge on those who "turned" you with nuclear fallout!!
-
-Can you handle "Dawn of the Living, Wake Up Dead"???
-
-Contributors:
-Dayyy-roon-paul aka: "walking beard?"
-
-Mad-mike-mcChickenNugget aka: "Dr. mike" 
-
-JB-nuff-said aka: "Dr. meeheans best friend"
-
->>>>>>> 8891a564372a5133063e9b75e83367776967b260
