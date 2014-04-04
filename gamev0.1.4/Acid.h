@@ -38,6 +38,8 @@ private:
 	Texture2D*	_explosionTexture;
 	Explosion*	_explosion;
 
+	lcgl::Sound acidInitialSound;
+
 public:
 	Acid	(const ModelMD2& model, const Texture2D& explosionTexInit, World* world, const Direction& newDirection);
 	~Acid	();
