@@ -1,7 +1,6 @@
 Dawn-of-the-living
-==================
+==================<<<<<<< HEAD
 What Would happen in a world where you are the zombie?
-<<<<<<< HEAD
 
 Traverse through the desert and take revenge on those who "turned" you with nuclear fallout!!
 
