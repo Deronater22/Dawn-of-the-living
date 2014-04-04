@@ -41,7 +41,7 @@ public:
 		OGRO_ZIGZAG_ANGLE,
 		DEFAULT_ENTITY_SIZE,
 		worldCoord (x, 0, z)
-		), _death("sounds//dyinggroan.wav")
+		), _death("sounds//2scream.wav")
 	{  
 		stateStart_ = 0;
 		stateEnd_ = 39;	
