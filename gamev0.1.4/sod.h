@@ -29,6 +29,7 @@ protected:
 	int stateStart_, stateEnd_;	// state keyframe start/end
 	int stateStart () const { return stateStart_; } //used by Ogro and Sod
 	lcgl::Direction _direction;//private direction mac 4/3/14
+	lcgl::Sound _death; //noise the model makes when it dies mac 4/3/14
 
 public:
 	SodEnemy (const ModelMD2& model,
@@ -37,7 +38,7 @@ public:
 		world, p, SOD_RADIUS_OF_AWARENESS, 
 		SOD_ZIGZAG_ANGLE,
 		DEFAULT_ENTITY_SIZE,
-		worldCoord (x, 0, z)) 
+		worldCoord (x, 0, z)),_death("sounds//dyinggroan.wav")
 	{ 
 		stateStart_ = 0;
 		stateEnd_ = 39;

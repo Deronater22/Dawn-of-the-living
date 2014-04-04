@@ -42,7 +42,8 @@ protected:
 
 	//Camera   myCamera;
 	//Camera*  camera ()  { return &myCamera; }
-	Direction _direction;
+	lcgl::Direction _direction;
+	//lcgl::Sound _pain;,_pain("sounds//2scream.wav")
 
 public:
 	Player(World* world = NULL) : Object (world, PLAYER_SIZE) { terrain = NULL; rocketSound = NULL; }

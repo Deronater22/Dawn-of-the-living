@@ -50,6 +50,7 @@ void MS3DMonster::OnCollision(Object *collisionObject)
 		else if (typeid(*collisionObject) == typeid(Acid))
 		{
 			// kill the monster
+			_death.play();
 			setAIState (AI_DEAD);	stop();
 		}
 		else if (typeid(*collisionObject) == typeid(Player))//for collisions with the player mac 4/3/14

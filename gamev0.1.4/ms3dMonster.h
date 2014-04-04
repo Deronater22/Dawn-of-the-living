@@ -33,6 +33,7 @@ protected:
 	float stateStart_, stateEnd_;	// state keyframe start/end
 	float stateStart () const { return stateStart_; } //used by Ogro and Sod
 	lcgl::Direction _direction;//private direction mac 4/3/14
+	lcgl::Sound _death;
 
 public:
 	MS3DMonster(const ModelMS3D& model,
@@ -49,7 +50,7 @@ public:
 				 Direction(0,0),
 				 DEFAULT_RUNNING_SPEED,
 				 MS3DMONSTER_DEFAULT_ANIMATION_SPEED
-				 ) 
+				 ), _death("sounds//dyinggroan.wav")
 	{ 
 		stateStart_ = 0.0;
 		stateEnd_ =(float)model.totalTime(); //our state is ALL moves

@@ -48,6 +48,7 @@ void OgroEnemy::OnCollision(Object *collisionObject)
 		else if (typeid(*collisionObject) == typeid(Acid))
 		{
 			// kill the ogre
+			_death.play();//play death noise mac 4/3/14
 			setAIState (AI_DEAD);	stop();
 		}
 		else if (typeid(*collisionObject) == typeid(Player))//for collisions with the player mac 4/3/14
@@ -99,6 +100,7 @@ void OgroEnemy::OnPrepare()
 		}
 		break;
 	case AI_DEAD:
+		
 		modelInstance_->setState (InstanceMD2::DIE);
 		stop();
 		//if (modelInstance_->nextFrame ()== stateStart()) die();	// time to kill the monster

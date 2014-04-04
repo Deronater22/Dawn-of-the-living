@@ -29,6 +29,7 @@ protected:
 	int stateStart_, stateEnd_;	// state keyframe start/end
 	int stateStart () const { return stateStart_; } //used by Ogro and Sod
 	lcgl::Direction _direction;//private direction mac 4/3/14
+	Sound _death; 
 	
 public:
 	OgroEnemy(const ModelMD2& model,
@@ -40,7 +41,7 @@ public:
 		OGRO_ZIGZAG_ANGLE,
 		DEFAULT_ENTITY_SIZE,
 		worldCoord (x, 0, z)
-		) 
+		), _death("sounds//dyinggroan.wav")
 	{  
 		stateStart_ = 0;
 		stateEnd_ = 39;	

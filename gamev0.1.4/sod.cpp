@@ -47,7 +47,8 @@ void SodEnemy::OnCollision(Object *collisionObject)
 		}
 		else if (typeid(*collisionObject) == typeid(Acid))
 		{
-			// kill the ogre
+			// kill the sod
+			_death.play();//play the sound of the enemy dieing mac
 			setAIState  (AI_DEAD);	stop();
 		}
 		else if (typeid(*collisionObject) == typeid(Player))//for collisions with the player mac 4/3/14
