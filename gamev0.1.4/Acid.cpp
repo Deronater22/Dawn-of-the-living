@@ -1,3 +1,10 @@
+/***********************
+Acid.cpp
+players primary weapon
+adapted by Dotl Dev Team 
+
+************************/
+
 #include <windows.h>
 #include <gl/gl.h>
 #include <math.h>
