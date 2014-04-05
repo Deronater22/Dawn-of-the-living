@@ -1,14 +1,10 @@
-/*
+/**************************************
 	SOD.CPP
 
 	The SodEnemy class implementation
+	Adapted By: DOTL DEV Team
 
-	OpenGL Game Programming
-	Author: Kevin Hawkins
-	Date: 3/30/2001
-	Description:
-
-*/
+***************************************/
 
 #include <windows.h>
 #include <gl/gl.h>

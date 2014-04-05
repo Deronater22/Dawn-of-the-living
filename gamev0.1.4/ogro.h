@@ -1,19 +1,17 @@
 #ifndef __OGRO_H
 #define __OGRO_H
 
-/*
+/************************************************************
 	OGRO.H
 
 	The SodEnemy class
 
-	OpenGL Game Programming
-	Author: Kevin Hawkins
-	Date: 3/30/2001
 	Description: The OgroEnemy represents the Ogro model
 			   enemy. This enemy is considered "dumb",
 			   but has a thicker coat of armor.
+			   Adapted By: DOTL Dev Team
 
-*/
+*************************************************************/
 
 #include "enemy.h"
 
