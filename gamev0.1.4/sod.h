@@ -1,19 +1,16 @@
 #ifndef __SOD_H
 #define __SOD_H
 
-/*
+/********************************************************
 	SOD.H
 
 	The SodEnemy class
-
-	OpenGL Game Programming
-	Author: Kevin Hawkins
-	Date: 3/30/2001
 	Description: The SodEnemy represents the Sod model
 			   enemy. This enemy is considered smarter,
 			   but has weaker armor than the Ogre.
+			   Adapted By DOTL Dev Team
 
-*/
+*********************************************************/
 
 #include "enemy.h"
 

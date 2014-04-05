@@ -1,15 +1,13 @@
-/*
+/************************************************************
 
 	PLAYER.H
 
 	The Player class
+	Description: player class implementation mac 4/5/14
 
-	OpenGL Game Programming
-	Author: Kevin Hawkins
-	Date: 3/30/2001
-	Description:
+	Adapted By DOTL DEV Team
 
-*/
+*************************************************************/
 
 #include <windows.h>
 #include <gl/gl.h>
