@@ -205,9 +205,13 @@ void World::LoadWorld()
 	numDwarfs = 0;
 
 	OgroModel.load("models\\male\\male.md2" , "models\\male\\6doom1.pcx" );//new male by mike re skinned from q2 model
-	SodModel.load("models\\male\\male.md2" , "models\\male\\mskin.pcx" );//new male by mike re skinned from q2 model
-	//SodModel.load("models\\girl\\girl.md2" , "models\\girl\\g9.pcx");//new girl by mike re skinned from q2 model
+	SodModel.load ("models\\hunt\\tris.md2", "models\\hunt\\ctf_r.pcx");//new male by mike re skinned from q2 model
 	RocketModel.load("models\\throwup2.md2"  , "models\\slime.jpg");
+	
+	//Alternate models Mac 4/6/14
+	//SodModel.load("models\\male\\male.md2" , "models\\male\\mskin.pcx" );//new male by mike re skinned from q2 model
+	//SodModel.load("models\\girl\\girl.md2" , "models\\girl\\g9.pcx");//new girl by mike re skinned from q2 model
+	
 	//dwarfModel.load ("models\\dwarf\\dwarf1.ms3d");
 
 	
