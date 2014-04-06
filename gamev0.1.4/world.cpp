@@ -204,10 +204,12 @@ void World::LoadWorld()
 	//I don't do this to dwarfs; there's only 1 dwarf in our world.
 	numDwarfs = 0;
 
-	OgroModel.load("models\\ogro\\tris.md2" , "models\\ogro\\ogrobase.pcx" );
-	SodModel.load("models\\sodf8\\tris.md2", "models\\sodf8\\abarlith.pcx");
-    RocketModel.load("models\\throwup2.md2"  , "models\\slime.jpg");
-    dwarfModel.load ("models\\dwarf\\dwarf1.ms3d");
+	OgroModel.load("models\\male\\male.md2" , "models\\male\\6doom1.pcx" );//new male by mike re skinned from q2 model
+	SodModel.load("models\\male\\male.md2" , "models\\male\\mskin.pcx" );//new male by mike re skinned from q2 model
+	//SodModel.load("models\\girl\\girl.md2" , "models\\girl\\g9.pcx");//new girl by mike re skinned from q2 model
+	RocketModel.load("models\\throwup2.md2"  , "models\\slime.jpg");
+	//dwarfModel.load ("models\\dwarf\\dwarf1.ms3d");
+
 	
 	// generate enemies
 	for (int enemyIdx = 0; enemyIdx < numOgros; enemyIdx++)
@@ -220,10 +222,10 @@ void World::LoadWorld()
 	// on different frames.
 	//This synchronization happened BEFORE I started using Models apart from instances (I think)
 	
-	MS3DMonster* dwarf = new MS3DMonster (dwarfModel, this, &player);
-	dwarf->position_ =  player.position(); dwarf->position_.x() += 75.0f;
-	push_back (dwarf);
-	++numDwarfs;
+	//MS3DMonster* dwarf = new MS3DMonster (dwarfModel, this, &player);
+	//dwarf->position_ =  player.position(); dwarf->position_.x() += 75.0f;       //no dwarf for now mike 4/5 14
+	//push_back (dwarf);
+	//++numDwarfs;
 
 	//Simple test monster, always there when we start, for debugging
 	OgroEnemy* enemy = new OgroEnemy (OgroModel, this, &player); 
