@@ -1,20 +1,18 @@
 #ifndef __WORLD_H
 #define __WORLD_H
 
-/*
+/**********************************************************
 	WORLD.H
 
   	The World class
 
-	Author: Kevin Hawkins
-	Date: 3/29/2001
 	Description: The World class represents the game world
 			   of the engine. All objects, the terrain,
 			   audio system, ambient world music and sound,
 			   and the camera are held here.
+			   Adapted By DOTL Dev Team
 
-
-*/
+***********************************************************/
 
 #include <dmusicc.h>               
 #include <dmusici.h>

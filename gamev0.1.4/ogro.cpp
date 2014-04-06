@@ -1,14 +1,13 @@
-/*
+/***********************************************
 	OGRO.CPP
 
 	The SodEnemy class implementation
 
-	OpenGL Game Programming
-	Author: Kevin Hawkins
-	Date: 3/30/2001
-	Description:
+	Description: adds MD2 enemies mac 4/5/14
 
-*/
+	Adapted By DOTL Dev Team
+
+**************************************************/
 
 #include <windows.h>
 #include <gl/gl.h>

@@ -1,18 +1,16 @@
 #ifndef __PLAYER_H
 #define __PLAYER_H
 
-/*
+/*******************************************************
 
 	PLAYER.H
 
 	The Player class
 
-	OpenGL Game Programming
-	Author: Kevin Hawkins
-	Date: 3/30/2001
-	Description:
+	Description:The game user or camera view mac 4/5 14
+	Adapted By: DOTL Dev Team
 
-*/
+********************************************************/
 
 #include <typeinfo.h>
 
