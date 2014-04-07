@@ -18,14 +18,12 @@ using namespace lcgl;
 
 class MS3DMonster;
 
-<<<<<<< HEAD
+
 #define ACID_SPEED 120.0f
 const float POS_DROP = .9;
 const float NEG_DROP = 1.1;
 const float SMALL_DROP = .1;
-=======
-#define ACID_SPEED 100.0f
->>>>>>> 4e4c5b69ebc9fed28cb214689135bcdfee4e733f
+
 
 Acid::Acid (const ModelMD2& rocketModel, const Texture2D& explosionTexInit, World* world, const Direction& newDirection) 
 	: Entity (new InstanceMD2 (rocketModel, DEFAULT_ENTITY_INTERPOLATION), world, 1.0f, NULL_VECTOR, newDirection, ACID_SPEED),
