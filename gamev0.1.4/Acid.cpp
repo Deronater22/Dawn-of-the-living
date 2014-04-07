@@ -1,10 +1,3 @@
-/***********************
-Acid.cpp
-players primary weapon
-adapted by Dotl Dev Team 
-
-************************/
-
 #include <windows.h>
 #include <gl/gl.h>
 #include <math.h>
@@ -13,29 +6,27 @@ adapted by Dotl Dev Team
 #include "lcglmath.h"
 #include "ogro.h"
 #include "world.h"
+#include"sound.h"
 
 using namespace lcgl;
 
 class MS3DMonster;
 
-
-#define ACID_SPEED 120.0f
-const float POS_DROP = .9;
-const float NEG_DROP = 1.1;
-const float SMALL_DROP = .1;
-
+#define ACID_SPEED 75.0f
+const float SMALL_DROP = .01;
+const float POS_DROP = .9879;
+const float NEG_DROP = 1.0121;
 
 Acid::Acid (const ModelMD2& rocketModel, const Texture2D& explosionTexInit, World* world, const Direction& newDirection) 
 	: Entity (new InstanceMD2 (rocketModel, DEFAULT_ENTITY_INTERPOLATION), world, 1.0f, NULL_VECTOR, newDirection, ACID_SPEED),
-		acidInitialSound("sounds//splat.wav") /* DT : creates the initial sound */
-{
+	acidInitialSound("sounds//splat.wav") /* DT : creates the initial sound */
+{	
 	_explosionTexture = (Texture2D*) &explosionTexInit;
 	Entity::run();
 	_distanceTraveled = 0.0;
 	_isExploding = false;
 	_explosion = NULL;
 	acidInitialSound.play();				// By DT : creates the initial sound when shooting acid
-
 	Load();
 }
 
@@ -51,13 +42,6 @@ Acid::~Acid()
 
 void Acid::OnAnimate(float deltaTime)
 {
-	if(pitch() < 5 && pitch() > -5)
-		myDirection_.setPitch(pitch()-SMALL_DROP);//edited by AAM
-	if(pitch() > 0)
-		myDirection_.setPitch(pitch()*POS_DROP);//edited by AAM
-	if(pitch() < 0)
-		myDirection_.setPitch(pitch()*NEG_DROP);//edited by AAM
-	
 	float cosYaw   = (float)cos(Deg2Rad(yaw()));
 	float sinYaw   = (float)sin(Deg2Rad(yaw())); 
 	float sinPitch = (float)sin(Deg2Rad(pitch()));
@@ -138,13 +122,9 @@ void Acid::OnDraw(const Player&)
 
 void Acid::OnPrepare()
 {
-
 	// perform collision detection from this entity with all other objects in world
-	if (!_isExploding)	
-	{
+	if (!_isExploding)		
 		world_->ProcessCollisions (this);
-
-	}
 	else if (_explosion->IsDead()) //&& ! entitySound->isPlaying())
 	{
 		_explosion->KillSystem();
