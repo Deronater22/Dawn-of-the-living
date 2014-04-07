@@ -1,6 +1,13 @@
+/*******************************
+Gui Class 
+adapted by: Michael && l_wood
+
+
+********************************/
+
 #include <math.h>
 #include "gui.h"
-#include <timer.h>
+#include <timer.h>//for use of fps counter mac
 
 
 using namespace lcgl;
@@ -67,9 +74,8 @@ void GUI::Draw()
 
 	twoDCoord<float> TimePos (0.4f, 0.48f);
 
-	//glColor4fv(Color(0.2f, 0.0f, 1.0f));
+	
 	glColor4fv(GREEN);
-
 	if (secondsLeft < 10)
 	{
 		if (millisecondsLeft < 10)
@@ -95,20 +101,22 @@ void GUI::Draw()
 	drawAcidIcon();
 
 	//debug fps (comment out if you do not want this displayed) mac 3/15/14
+	//******************************DEBUG***************************************
 	glColor4fv(GREEN);
 	print(fps, twoDCoord<float>(-0.65f,0.44f) ,"Fps: %4.0f", timer_.GetFPS(1) );
+	//********************************FPS***************************************
 
-	//glColor4fv(RED);
+
 	print(healthIcon,twoDCoord<float>(-0.7f,-0.5f),"+");//draw a plus symbol for the health bar
 	
 	glDisable(GL_BLEND);
 	glEnable(GL_TEXTURE_2D);
 }
 
-void GUI::drawCrosshair()const //used to draw the cross hair
+void GUI::drawCrosshair()const //used to draw the cross hair mac 4/5/14
 {
 
-	const int WINDOW_HI = 800, WINDOW_WID = 600;
+	const int WINDOW_HI = 800, WINDOW_WID = 600;//windows params
 
 	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
 	crosshair_.activate();
@@ -141,10 +149,10 @@ void GUI::drawCrosshair()const //used to draw the cross hair
 
 
 }
-void GUI::drawAcidIcon()const
+void GUI::drawAcidIcon()const //draws the icon for spitting acid mac 4/5/14
 {
 	
-	const int WINDOW_HI = 800, WINDOW_WID = 600;
+	const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
 
 	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
 	_icon.activate();

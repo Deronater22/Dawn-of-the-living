@@ -1,3 +1,10 @@
+/***********************
+Acid.cpp
+players primary weapon
+adapted by Dotl Dev Team 
+
+************************/
+
 #include <windows.h>
 #include <gl/gl.h>
 #include <math.h>
@@ -11,19 +18,25 @@ using namespace lcgl;
 
 class MS3DMonster;
 
+<<<<<<< HEAD
 #define ACID_SPEED 120.0f
 const float POS_DROP = .9;
 const float NEG_DROP = 1.1;
 const float SMALL_DROP = .1;
+=======
+#define ACID_SPEED 100.0f
+>>>>>>> 4e4c5b69ebc9fed28cb214689135bcdfee4e733f
 
 Acid::Acid (const ModelMD2& rocketModel, const Texture2D& explosionTexInit, World* world, const Direction& newDirection) 
-	: Entity (new InstanceMD2 (rocketModel, DEFAULT_ENTITY_INTERPOLATION), world, 1.0f, NULL_VECTOR, newDirection, ACID_SPEED)
+	: Entity (new InstanceMD2 (rocketModel, DEFAULT_ENTITY_INTERPOLATION), world, 1.0f, NULL_VECTOR, newDirection, ACID_SPEED),
+		acidInitialSound("sounds//splat.wav") /* DT : creates the initial sound */
 {
 	_explosionTexture = (Texture2D*) &explosionTexInit;
 	Entity::run();
 	_distanceTraveled = 0.0;
 	_isExploding = false;
 	_explosion = NULL;
+	acidInitialSound.play();				// By DT : creates the initial sound when shooting acid
 
 	Load();
 }
@@ -127,9 +140,13 @@ void Acid::OnDraw(const Player&)
 
 void Acid::OnPrepare()
 {
+
 	// perform collision detection from this entity with all other objects in world
-	if (!_isExploding)		
+	if (!_isExploding)	
+	{
 		world_->ProcessCollisions (this);
+
+	}
 	else if (_explosion->IsDead()) //&& ! entitySound->isPlaying())
 	{
 		_explosion->KillSystem();
