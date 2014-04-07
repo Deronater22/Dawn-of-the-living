@@ -35,7 +35,7 @@ public:
 		world, p, SOD_RADIUS_OF_AWARENESS, 
 		SOD_ZIGZAG_ANGLE,
 		DEFAULT_ENTITY_SIZE,
-		worldCoord (x, 0, z)),_death("sounds//dyinggroan.wav")
+		worldCoord (x, 0, z)),_death("sounds//death4.wav")
 	{ 
 		stateStart_ = 0;
 		stateEnd_ = 39;

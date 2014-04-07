@@ -19,6 +19,9 @@
 #include "ogro.h"
 #include "lcglmath.h"
 
+
+const float DEFAULT_DAMAGE = 0.0001f;//default amount of player damage taken mac 4/7/14
+
 using namespace lcgl;
 using namespace std;
 
@@ -81,6 +84,7 @@ void Player::OnCollision(Object *collisionObject)
 		|| typeid(*collisionObject)== typeid(MS3DMonster))//fixed collision with player mac 4/3/14
 	{
 		//_pain.play();
+		health-DEFAULT_DAMAGE;
 		if (velocity().z() > 0.0) velocity_ = NULL_VECTOR; 
 		position_.z()= position().z() - 1;//push player back from enemies mac 4/3/14
 		

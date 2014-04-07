@@ -31,7 +31,7 @@ static const worldCoord STARTING_PLAYER_POSITION (0, 0, 0);
 World::World(int w, int h) : _worldTrack ("sounds//darksiege.mid"),_ambient("ambient.wav"),
 _explosionSound ("sounds/slimesplash.wav"), terrain (32, 1.0f),
 skybox_("media/desplain"), debug("Arial" ,25), 
-theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0)
+theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0),gui(player)
 
 {
 	_explosionSound.setRepeats (0);

@@ -36,7 +36,7 @@ private:
 	Texture2D crosshair_, _icon;
 
 public:
-	GUI();
+	GUI(Player& player);
 	GUI (const GUI&);
 	void operator= (const GUI&);
 

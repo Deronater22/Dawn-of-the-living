@@ -27,9 +27,10 @@ class SodEnemy; class OgroEnemy; class Terrain;
 #define PLAYER_SIZE 7.0f
 
 class World;
-
+extern const float DEFAULT_DAMAGE;
 class Player : public Object
 {
+	
 private:
 	Terrain* terrain;
 	Sound*   rocketSound;
