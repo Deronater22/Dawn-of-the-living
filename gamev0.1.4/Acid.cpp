@@ -6,6 +6,7 @@
 #include "lcglmath.h"
 #include "ogro.h"
 #include "world.h"
+#include"sound.h"
 
 using namespace lcgl;
 
@@ -17,14 +18,15 @@ const float POS_DROP = .9879;
 const float NEG_DROP = 1.0121;
 
 Acid::Acid (const ModelMD2& rocketModel, const Texture2D& explosionTexInit, World* world, const Direction& newDirection) 
-	: Entity (new InstanceMD2 (rocketModel, DEFAULT_ENTITY_INTERPOLATION), world, 1.0f, NULL_VECTOR, newDirection, ACID_SPEED)
-{
+	: Entity (new InstanceMD2 (rocketModel, DEFAULT_ENTITY_INTERPOLATION), world, 1.0f, NULL_VECTOR, newDirection, ACID_SPEED),
+	acidInitialSound("sounds//splat.wav") /* DT : creates the initial sound */
+{	
 	_explosionTexture = (Texture2D*) &explosionTexInit;
 	Entity::run();
 	_distanceTraveled = 0.0;
 	_isExploding = false;
 	_explosion = NULL;
-
+	acidInitialSound.play();				// By DT : creates the initial sound when shooting acid
 	Load();
 }
 
