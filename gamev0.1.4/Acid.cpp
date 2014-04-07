@@ -11,7 +11,10 @@ using namespace lcgl;
 
 class MS3DMonster;
 
-#define ACID_SPEED 75.0f
+#define ACID_SPEED 120.0f
+const float POS_DROP = .9;
+const float NEG_DROP = 1.1;
+const float SMALL_DROP = .1;
 
 Acid::Acid (const ModelMD2& rocketModel, const Texture2D& explosionTexInit, World* world, const Direction& newDirection) 
 	: Entity (new InstanceMD2 (rocketModel, DEFAULT_ENTITY_INTERPOLATION), world, 1.0f, NULL_VECTOR, newDirection, ACID_SPEED)
@@ -37,6 +40,13 @@ Acid::~Acid()
 
 void Acid::OnAnimate(float deltaTime)
 {
+	if(pitch() < 5 && pitch() > -5)
+		myDirection_.setPitch(pitch()-SMALL_DROP);//edited by AAM
+	if(pitch() > 0)
+		myDirection_.setPitch(pitch()*POS_DROP);//edited by AAM
+	if(pitch() < 0)
+		myDirection_.setPitch(pitch()*NEG_DROP);//edited by AAM
+	
 	float cosYaw   = (float)cos(Deg2Rad(yaw()));
 	float sinYaw   = (float)sin(Deg2Rad(yaw())); 
 	float sinPitch = (float)sin(Deg2Rad(pitch()));
