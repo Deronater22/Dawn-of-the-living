@@ -14,6 +14,6 @@ JB-nuff-said aka: "Dr. Meeheans best friend"
 
 L_Woood-s aka: Spider-Man
 
-Anthony_bourdain aks: Ash-Ketchum
+Anthony_bourdain aka: Ash-Ketchum
 
 La_Nicole aka: Dr. Mayer 
