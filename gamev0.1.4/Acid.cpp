@@ -4,7 +4,7 @@
 #include "Acid.h"
 #include "worldCoord.h"
 #include "lcglmath.h"
-#include "ogro.h"
+#include "Brute.h"
 #include "world.h"
 #include"sound.h"
 
@@ -13,9 +13,9 @@ using namespace lcgl;
 class MS3DMonster;
 
 #define ACID_SPEED 75.0f
-const float SMALL_DROP = .01;
-const float POS_DROP = .9879;
-const float NEG_DROP = 1.0121;
+const float SMALL_DROP = 0.01f;
+const float POS_DROP = 0.9879f;
+const float NEG_DROP = 1.0121f;
 
 Acid::Acid (const ModelMD2& rocketModel, const Texture2D& explosionTexInit, World* world, const Direction& newDirection) 
 	: Entity (new InstanceMD2 (rocketModel, DEFAULT_ENTITY_INTERPOLATION), world, 1.0f, NULL_VECTOR, newDirection, ACID_SPEED),
@@ -86,8 +86,8 @@ void Acid::OnCollision(Object *collisionObject)
 								>= position().y())
 				makeItExplode = true;
 		}
-		else if (typeid(*collisionObject) == typeid(SodEnemy )) makeItExplode = true;
-		else if (typeid(*collisionObject) == typeid(OgroEnemy)) makeItExplode = true;
+		else if (typeid(*collisionObject) == typeid(ShemanEnemy )) makeItExplode = true;
+		else if (typeid(*collisionObject) == typeid(BruteEnemy)) makeItExplode = true;
 		else if (typeid(*collisionObject) == typeid(MS3DMonster)) makeItExplode=true;
 
 		if (makeItExplode)

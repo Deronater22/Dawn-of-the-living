@@ -15,8 +15,8 @@ enum {PLAYER_ELEVATION = 14};	 //How far above the map does the camera stay?
 */
 
 #include "world.h"
-#include "sod.h"
-#include "ogro.h"
+#include "sheman.h"
+#include "Brute.h"
 #include "ms3dMonster.h"
 #include "skybox.h"
 #include "EnviroObj.h"
@@ -31,7 +31,7 @@ static const worldCoord STARTING_PLAYER_POSITION (0, 0, 0);
 World::World(int w, int h) : _worldTrack ("sounds//darksiege.mid"),_ambient("ambient.wav"),
 _explosionSound ("sounds/slimesplash.wav"), terrain (32, 1.0f),
 skybox_("media/desplain"), debug("Arial" ,25), 
-theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0)
+theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0),gui(player)
 
 {
 	_explosionSound.setRepeats (0);
@@ -121,8 +121,8 @@ void World::Animate( float deltaTime)
 			}
 	} while (lastIterationDeletedSomething);
 
-	numSods  = CountObjectTypes(typeid(SodEnemy));           
-	numOgros = CountObjectTypes(typeid(OgroEnemy));       
+	numSods  = CountObjectTypes(typeid(ShemanEnemy));           
+	numOgros = CountObjectTypes(typeid(BruteEnemy));       
 	numDwarfs= CountObjectTypes(typeid(MS3DMonster));
 
 	gui.SetEnemiesLeft(numOgros + numSods + numDwarfs);
@@ -206,7 +206,7 @@ void World::LoadWorld()
 
 	OgroModel.load("models\\male\\male.md2" , "models\\male\\6doom1.pcx" );//new male by mike re skinned from q2 model
 	SodModel.load ("models\\hunt\\tris.md2", "models\\hunt\\ctf_r.pcx");//new male by mike re skinned from q2 model
-	RocketModel.load("models\\throwup2.md2"  , "models\\slime.jpg");
+	AcidModel.load("models\\acid\\throwup2.md2"  , "models\\acid\\slime.jpg");
 	
 	//Alternate models Mac 4/6/14
 	//SodModel.load("models\\male\\male.md2" , "models\\male\\mskin.pcx" );//new male by mike re skinned from q2 model
@@ -218,8 +218,8 @@ void World::LoadWorld()
 	// generate enemies
 	for (int enemyIdx = 0; enemyIdx < numOgros; enemyIdx++)
 	{
-		OgroEnemy* ogroEnemy = new OgroEnemy (OgroModel, this, &player); distribute (ogroEnemy);
-		SodEnemy*   sodEnemy = new  SodEnemy (SodModel, this, &player); distribute ( sodEnemy);
+		BruteEnemy* bruteEnemy = new BruteEnemy (OgroModel, this, &player); distribute (bruteEnemy);
+		ShemanEnemy*   shemanEnemy = new  ShemanEnemy (SodModel, this, &player); distribute ( shemanEnemy);
 	}
 
 	//I note that the enemies are always in sync -- maybe introduce a random element so they start
@@ -231,10 +231,10 @@ void World::LoadWorld()
 	//push_back (dwarf);
 	//++numDwarfs;
 
-	//Simple test monster, always there when we start, for debugging
-	OgroEnemy* enemy = new OgroEnemy (OgroModel, this, &player); 
-	enemy->position_ = player.position(); enemy->position_.x() += 50.0f;
-	++numOgros; push_back (enemy);
+	////Simple test monster, always there when we start, for debugging
+	//BruteEnemy* enemy = new BruteEnemy (OgroModel, this, &player); 
+	//enemy->position_ = player.position(); enemy->position_.x() += 50.0f;//causes enemy behind you bug mac 4/7/14
+	//++numOgros; push_back (enemy);
 
 }
 World::~World ()

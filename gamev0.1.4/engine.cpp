@@ -14,7 +14,7 @@ using namespace lcgl;
 
 extern OGLWindow myWindow;
 
-const float Engine::DEFAULT_MOUSE_SENSITIVITY = 2.0f;
+const float Engine::DEFAULT_MOUSE_SENSITIVITY = 1.0f;//better sensitivity? mac
 
 float Engine::GetNormalizedPosX(LPARAM lParam)
 {	
@@ -93,7 +93,7 @@ void Engine::CheckInput(float deltaTime)
 			if (buttonDelta == 0.0f)
 			{
 				OnMouseDownL(0,0);
-				buttonDelta = 0.5f;
+				buttonDelta = 0.2f;//better sensitivity? mac
 			}
 		}
 	}

@@ -217,6 +217,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Brute.h"
+				>
+			</File>
+			<File
 				RelativePath=".\enemy.h"
 				>
 			</File>
@@ -257,10 +261,6 @@
 				>
 			</File>
 			<File
-				RelativePath="ogro.h"
-				>
-			</File>
-			<File
 				RelativePath="player.h"
 				>
 			</File>
@@ -269,15 +269,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Sheman.h"
+				>
+			</File>
+			<File
 				RelativePath="simpengine.h"
 				>
 			</File>
 			<File
 				RelativePath=".\skybox.h"
-				>
-			</File>
-			<File
-				RelativePath="sod.h"
 				>
 			</File>
 			<File
@@ -295,6 +295,26 @@
 			>
 			<File
 				RelativePath=".\Acid.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions=""
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions=""
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Brute.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -454,26 +474,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="ogro.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="player.cpp"
 				>
 				<FileConfiguration
@@ -495,6 +495,10 @@
 			</File>
 			<File
 				RelativePath=".\SandStorm.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Sheman.cpp"
 				>
 			</File>
 			<File
@@ -520,26 +524,6 @@
 			<File
 				RelativePath=".\skybox.cpp"
 				>
-			</File>
-			<File
-				RelativePath="sod.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="terrain.cpp"

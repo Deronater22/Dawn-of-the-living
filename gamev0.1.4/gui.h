@@ -36,7 +36,7 @@ private:
 	Texture2D crosshair_, _icon;
 
 public:
-	GUI();
+	GUI(Player& player);
 	GUI (const GUI&);
 	void operator= (const GUI&);
 
@@ -47,8 +47,8 @@ public:
 
 	void DrawWinner		();
 	void DrawLoser		();
-	void drawCrosshair  ()const;
-	void drawAcidIcon   ()const;
+	void drawCrosshair  ()const;//draw the player's crosshair mac 4/7/14
+	void drawAcidIcon   ()const;//draw the icon for acid spit mac 4/7/14
 	
 };
 

@@ -25,8 +25,8 @@ void MS3DMonster::OnCollision(Object *collisionObject)
 	if (modelInstance_->state() != InstanceMD2::DIE)
 	{
 		// if this enemy collides with another enemy
-		if ((typeid(*collisionObject) == typeid(SodEnemy)) ||
-			(typeid(*collisionObject) == typeid(OgroEnemy)))
+		if ((typeid(*collisionObject) == typeid(ShemanEnemy)) ||
+			(typeid(*collisionObject) == typeid(BruteEnemy)))
 			setAIState (AI_UNCARING);
 
 		// if this enemy collides with the terrain (always)
