@@ -10,6 +10,10 @@ Contributors: Dayyy-roon-paul aka: "walking beard?"
 
 Mad-mike-mcChickenNugget aka: "Dr. mike"
 
-JB-nuff-said aka: "Dr. meeheans best friend"
+JB-nuff-said aka: "Dr. Meeheans best friend"
 
-L_Woood
+L_Woood-s aka: Spider-Man
+
+Anthony_bourdain aks: Ash-Ketchum
+
+La_Nicole aka: Dr. Mayer 
