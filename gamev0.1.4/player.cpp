@@ -62,7 +62,7 @@ void Player::FireWeapon()
 	// the world. fire the ammo
 
 	Direction dir (yaw(), pitch ());
-	Acid* newRocket = new Acid (world_->RocketModel, world_->_explosionTexture, world_, dir); 
+	Acid* newRocket = new Acid (world_->AcidModel, world_->_explosionTexture, world_, dir); 
 
 	newRocket->position_  = position  ();
 	newRocket->SetAudio(&(world_->explosionSound()));
@@ -80,7 +80,7 @@ void Player::OnCollision(Object *collisionObject)
 					+ size();
 		setElevation(position().y()+ 1 ); //+one to keep player from getting stuck
 	}
-	else if (typeid(*collisionObject) == typeid(SodEnemy) || typeid(*collisionObject) == typeid(BruteEnemy) 
+	else if (typeid(*collisionObject) == typeid(ShemanEnemy) || typeid(*collisionObject) == typeid(BruteEnemy) 
 		|| typeid(*collisionObject)== typeid(MS3DMonster))//fixed collision with player mac 4/3/14
 	{
 

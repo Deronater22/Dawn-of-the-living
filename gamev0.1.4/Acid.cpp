@@ -86,7 +86,7 @@ void Acid::OnCollision(Object *collisionObject)
 								>= position().y())
 				makeItExplode = true;
 		}
-		else if (typeid(*collisionObject) == typeid(SodEnemy )) makeItExplode = true;
+		else if (typeid(*collisionObject) == typeid(ShemanEnemy )) makeItExplode = true;
 		else if (typeid(*collisionObject) == typeid(BruteEnemy)) makeItExplode = true;
 		else if (typeid(*collisionObject) == typeid(MS3DMonster)) makeItExplode=true;
 

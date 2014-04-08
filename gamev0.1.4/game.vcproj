@@ -269,15 +269,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Sheman.h"
+				>
+			</File>
+			<File
 				RelativePath="simpengine.h"
 				>
 			</File>
 			<File
 				RelativePath=".\skybox.h"
-				>
-			</File>
-			<File
-				RelativePath="sod.h"
 				>
 			</File>
 			<File
@@ -498,6 +498,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Sheman.cpp"
+				>
+			</File>
+			<File
 				RelativePath="simpengine.cpp"
 				>
 				<FileConfiguration
@@ -520,26 +524,6 @@
 			<File
 				RelativePath=".\skybox.cpp"
 				>
-			</File>
-			<File
-				RelativePath="sod.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="terrain.cpp"

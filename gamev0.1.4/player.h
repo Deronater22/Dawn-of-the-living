@@ -22,7 +22,7 @@
 
 using namespace lcgl;
 
-class SodEnemy; class BruteEnemy; class Terrain;
+class ShemanEnemy; class BruteEnemy; class Terrain;
 
 #define PLAYER_SIZE 7.0f
 

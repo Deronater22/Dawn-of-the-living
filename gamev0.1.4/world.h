@@ -85,7 +85,7 @@ protected:
 public:
 	class CantBeCopied: public LCGLException {};
 
-	ModelMD2 RocketModel;
+	ModelMD2 AcidModel;
 	Texture2D _explosionTexture;
 
 	Player	player;			

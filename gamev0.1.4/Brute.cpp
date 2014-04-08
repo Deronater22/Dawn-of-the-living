@@ -25,7 +25,7 @@ void BruteEnemy::OnCollision(Object *collisionObject)
 	if (modelInstance_->state() != InstanceMD2::DIE)
 	{
 		// if this enemy collides with another enemy
-		if ((typeid(*collisionObject) == typeid(SodEnemy)) ||
+		if ((typeid(*collisionObject) == typeid(ShemanEnemy)) ||
 			(typeid(*collisionObject) == typeid(BruteEnemy)) ||
 			(typeid(*collisionObject) == typeid(MS3DMonster)))
 			setAIState (AI_UNCARING);
