@@ -217,6 +217,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Brute.h"
+				>
+			</File>
+			<File
 				RelativePath=".\enemy.h"
 				>
 			</File>
@@ -257,10 +261,6 @@
 				>
 			</File>
 			<File
-				RelativePath="ogro.h"
-				>
-			</File>
-			<File
 				RelativePath="player.h"
 				>
 			</File>
@@ -295,6 +295,26 @@
 			>
 			<File
 				RelativePath=".\Acid.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions=""
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						PreprocessorDefinitions=""
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Brute.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -435,26 +455,6 @@
 			</File>
 			<File
 				RelativePath="oglwindow.cpp"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						PreprocessorDefinitions=""
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="ogro.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"

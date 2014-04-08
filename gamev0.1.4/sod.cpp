@@ -11,7 +11,7 @@
 #include "sod.h"
 #include "Acid.h"
 #include "lcglmath.h"
-#include "ogro.h"
+#include "Brute.h"
 
 class MS3DMonster;
 
@@ -24,7 +24,7 @@ void SodEnemy::OnCollision(Object *collisionObject)
 	{
 		// if this enemy collides with another enemy
 		if ((typeid(*collisionObject) == typeid(SodEnemy)) ||
-			(typeid(*collisionObject) == typeid(OgroEnemy)) ||
+			(typeid(*collisionObject) == typeid(BruteEnemy)) ||
 			(typeid(*collisionObject) == typeid(MS3DMonster)))
 			setAIState (AI_UNCARING);
 

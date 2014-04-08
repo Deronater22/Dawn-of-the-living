@@ -33,9 +33,9 @@ Sandstorm::~Sandstorm()
 void Sandstorm::InitializeParticle(int index)
 {
 	  // start the particle in emission zone
-	  particleList[index].pos.x() = width + 0.05f +Frand(2.0f)* width;
+	  particleList[index].pos.x() = width + 0.05f + Frand(2.0f)* width;
 
-	  particleList[index].pos.y() = height + 20 + Frand();
+	  particleList[index].pos.y() = height + 20.0f + Frand();
 
 	  particleList[index].pos.z() = origin.z() +Frand();
 

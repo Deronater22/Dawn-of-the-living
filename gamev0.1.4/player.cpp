@@ -16,7 +16,7 @@
 #include "player.h"
 #include "world.h"
 #include "Acid.h"
-#include "ogro.h"
+#include "Brute.h"
 #include "lcglmath.h"
 
 
@@ -26,9 +26,9 @@ using namespace lcgl;
 using namespace std;
 
 World* world = NULL;
-Player::Player(const Player& thePlayer) : Object (world, PLAYER_SIZE)
+Player::Player(const Player& thePlayer) : Object (world, PLAYER_SIZE),_health(100)
 {
-	 terrain = NULL; rocketSound = NULL; health=100;
+	 terrain = NULL; acidSound = NULL; 
 }
 void Player::Animate(float deltaTime)
 {
@@ -80,14 +80,16 @@ void Player::OnCollision(Object *collisionObject)
 					+ size();
 		setElevation(position().y()+ 1 ); //+one to keep player from getting stuck
 	}
-	else if (typeid(*collisionObject) == typeid(SodEnemy) || typeid(*collisionObject) == typeid(OgroEnemy) 
+	else if (typeid(*collisionObject) == typeid(SodEnemy) || typeid(*collisionObject) == typeid(BruteEnemy) 
 		|| typeid(*collisionObject)== typeid(MS3DMonster))//fixed collision with player mac 4/3/14
 	{
-		//_pain.play();
-		health-DEFAULT_DAMAGE;
+
+		//_pain.play();//possibly play pain sound here? mac
+		(signed)_health-=0.001f;//is player taking damage? mac 4/7/14
 		if (velocity().z() > 0.0) velocity_ = NULL_VECTOR; 
 		position_.z()= position().z() - 1;//push player back from enemies mac 4/3/14
 		
+
 	}
 
 }

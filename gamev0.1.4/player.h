@@ -22,7 +22,7 @@
 
 using namespace lcgl;
 
-class SodEnemy; class OgroEnemy; class Terrain;
+class SodEnemy; class BruteEnemy; class Terrain;
 
 #define PLAYER_SIZE 7.0f
 
@@ -33,23 +33,21 @@ class Player : public Object
 	
 private:
 	Terrain* terrain;
-	Sound*   rocketSound;
-	int health; 
+	Sound*   acidSound;
+	int _health; 
 protected:
 	void OnCollision (Object *collisionObject);
 
 	void OnPrepare ()	{ ProcessCollisions(this);   } //Seems like we should!
 
-	//Camera   myCamera;
-	//Camera*  camera ()  { return &myCamera; }
 	lcgl::Direction _direction;
 	//lcgl::Sound _pain;,_pain("sounds//2scream.wav")
 
 public:
-	Player(World* world = NULL) : Object (world, PLAYER_SIZE) { terrain = NULL; rocketSound = NULL; health=100; }
+	Player(World* world = NULL) : Object (world, PLAYER_SIZE),_health(100) { terrain = NULL; acidSound = NULL;  }
 	~Player() {}
 	Player (const Player&);
-	inline int getHealth(){return health;};
+	
 	void operator= (const Player&);
 
 	//float		direction ()	{ return camera()->yaw();   }
@@ -68,6 +66,7 @@ public:
 	
 	void SetTerrain	 (Terrain *t) { terrain = t; }
 
+	inline int getHealth(){return _health;} //get player's current health
 	void FireWeapon	 ();
 
 	void Animate (float deltaTime);
