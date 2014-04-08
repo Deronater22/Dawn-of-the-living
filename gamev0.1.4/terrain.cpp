@@ -35,7 +35,7 @@ using namespace lcgl;
 Terrain::Terrain (int w=DEFAULT_TERRAIN_WIDTH, float rFactor=DEFAULT_R_FACTOR):
 
 	Object (NULL, float(sqrt(2*square (width*TERRAIN_MUL)))), 
-	fogColor (0.35,0.14,0.01), 
+	fogColor (0.35f,0.14f,0.01f), 
 	myFog (0.02f,fogColor, GL_LINEAR), 
 	envCacti_(cactus_,"bill/cacti.bmp"),
 	envGrass_(tree_,"bill/deadgrass.bmp"),
@@ -115,7 +115,7 @@ void Terrain::OnDraw(const Player& p)
 
 	// fog parameters here in order for them to work 
 	myFog.enable();
-	myFog.setDensity(0.0010);
+	myFog.setDensity(0.0010f);
 	myFog.setMode(GL_LINEAR);
 	myFog.setRange (FOG_MIN_DEPTH, FOG_MAX_DEPTH);		//setup fog min and max range
 	myFog.setHint (GL_NICEST);

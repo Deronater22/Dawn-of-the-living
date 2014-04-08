@@ -16,7 +16,7 @@ enum {PLAYER_ELEVATION = 14};	 //How far above the map does the camera stay?
 
 #include "world.h"
 #include "sod.h"
-#include "ogro.h"
+#include "Brute.h"
 #include "ms3dMonster.h"
 #include "skybox.h"
 #include "EnviroObj.h"
@@ -31,7 +31,7 @@ static const worldCoord STARTING_PLAYER_POSITION (0, 0, 0);
 World::World(int w, int h) : _worldTrack ("sounds//darksiege.mid"),_ambient("ambient.wav"),
 _explosionSound ("sounds/slimesplash.wav"), terrain (32, 1.0f),
 skybox_("media/desplain"), debug("Arial" ,25), 
-theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0)
+theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0),gui(player)
 
 {
 	_explosionSound.setRepeats (0);
@@ -122,7 +122,7 @@ void World::Animate( float deltaTime)
 	} while (lastIterationDeletedSomething);
 
 	numSods  = CountObjectTypes(typeid(SodEnemy));           
-	numOgros = CountObjectTypes(typeid(OgroEnemy));       
+	numOgros = CountObjectTypes(typeid(BruteEnemy));       
 	numDwarfs= CountObjectTypes(typeid(MS3DMonster));
 
 	gui.SetEnemiesLeft(numOgros + numSods + numDwarfs);
@@ -218,7 +218,7 @@ void World::LoadWorld()
 	// generate enemies
 	for (int enemyIdx = 0; enemyIdx < numOgros; enemyIdx++)
 	{
-		OgroEnemy* ogroEnemy = new OgroEnemy (OgroModel, this, &player); distribute (ogroEnemy);
+		BruteEnemy* ogroEnemy = new BruteEnemy (OgroModel, this, &player); distribute (ogroEnemy);
 		SodEnemy*   sodEnemy = new  SodEnemy (SodModel, this, &player); distribute ( sodEnemy);
 	}
 
@@ -232,7 +232,7 @@ void World::LoadWorld()
 	//++numDwarfs;
 
 	//Simple test monster, always there when we start, for debugging
-	OgroEnemy* enemy = new OgroEnemy (OgroModel, this, &player); 
+	BruteEnemy* enemy = new BruteEnemy (OgroModel, this, &player); 
 	enemy->position_ = player.position(); enemy->position_.x() += 50.0f;
 	++numOgros; push_back (enemy);
 
