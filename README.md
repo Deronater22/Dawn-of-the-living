@@ -16,6 +16,6 @@ L_Woood-s aka: Spider-Man
 
 Anthony_bourdain aka: Ash-Ketchum
 
-La_Nicole aka: Dr. Mayer 
+La_Nicole aka: Dr. Girlfriend 
 
 D_Russ aka: Jack Russell Terrier
