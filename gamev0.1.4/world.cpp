@@ -31,9 +31,10 @@ static const worldCoord STARTING_PLAYER_POSITION (0, 0, 0);
 World::World(int w, int h) : _worldTrack ("sounds//darksiege.mid"),_ambient("ambient.wav"),
 _explosionSound ("sounds/slimesplash.wav"), terrain (32, 1.0f),
 skybox_("media/desplain"), debug("Arial" ,25), 
-theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0),gui(player)
+theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0),gui(player),_isDebug(false)
 
 {
+	_timer.Init();//initialize timer for fps mac 4/12/14
 	_explosionSound.setRepeats (0);
 
 	SetScreen (w, h);
@@ -76,14 +77,6 @@ void World::Animate( float deltaTime)
 	player.Animate (deltaTime);
 	skybox_.render (player.position());  //draw the skybox that moves with the player
 	
-	//******************************************************************************
-	//(comment out if you do not want to render the world coordinates)
-	//debug only player position has to be here for location of the player to display accurate (current)position
-	glColor4fv(GREEN);
-	print(debug, twoDCoord<float>(-0.65f,0.48f), "Map pos: X:%4.0f Y:%4.0f Z:%4.0f" ,
-		player.position().x(), player.position().y(), player.position().z() );
-	//******************************************************************************
-
 	// set camera height based on player position on terrain
 	player.position().y() = terrain.GetHeight(player.position().x(), 
 											player.position().z()) 
@@ -130,6 +123,20 @@ void World::Animate( float deltaTime)
 
 	if (!gameDone)		timeElapsed += deltaTime;
 	else				timeElapsed = timeStart;
+
+	if(isDebugging()== true){//new GUI debug mike 4/12/14
+		//******************************DEBUG***************************************
+		//debug player to display accurate (current)position
+		glColor4fv(GREEN);
+		print(debug,twoDCoord<float>(-0.65f,0.48f),"---Debug DOTL v0.1.4-----------");
+		print(debug, twoDCoord<float>(-0.65f,0.44f), "Map pos: X:%4.0f Y:%4.0f Z:%4.0f" ,
+		player.position().x(), player.position().y(), player.position().z() );
+		//debug fps  mac 3/15/14
+		
+		print(debug,twoDCoord<float>(-0.65f,0.40f) ,"Fps: %4.0f", _timer.GetFPS(1) );
+		print(debug,twoDCoord<float>(-0.65f,0.36f) ,"------------------------------------------" );
+		//********************************FPS***************************************
+	}
 	
 }
 

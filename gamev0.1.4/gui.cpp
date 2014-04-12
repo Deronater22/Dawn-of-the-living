@@ -98,18 +98,11 @@ void GUI::Draw()
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
+	
 	drawCrosshair();//draw the cross hair here mac 3/26/14
 	
 	drawAcidIcon();
-
-	//debug fps (comment out if you do not want this displayed) mac 3/15/14
-	//******************************DEBUG***************************************
 	glColor4fv(GREEN);
-	print(fps, twoDCoord<float>(-0.65f,0.44f) ,"Fps: %4.0f", timer_.GetFPS(1) );
-	//********************************FPS***************************************
-
-
 	print(healthIcon,twoDCoord<float>(-0.7f,-0.5f),"+");//draw a plus symbol for the health bar
 	print(health, twoDCoord<float> (-0.6f,-.47f),"HP: %d"  ,player_.getHealth()); //print out the player's health l_wood_s
 	

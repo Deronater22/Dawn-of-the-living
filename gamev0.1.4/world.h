@@ -54,7 +54,8 @@ private:
 	Sound	_ambient;// the world ambient sound
 	GUI		gui;
 	Terrain	terrain;	
-
+	bool _isDebug;//debug mac
+	lcgl::Timer _timer;//debug 
 
 	Skybox skybox_;					//skybox
 	Sandstorm theSand_;				//particlesystem
@@ -114,7 +115,8 @@ public:
 	void Prepare() { OnPrepare(); }
 
 	void FadeScreen();
-
+	bool isDebugging(){ return _isDebug; }              //debugging functions for displaying debug info
+	void setDebugging(bool isDebug){_isDebug = isDebug;}
 	bool IsGameDone() { return gameDone; }
 	void QuitGame()   { gameDone = true; }
 	int  GetOgros()   { return numOgros; }
