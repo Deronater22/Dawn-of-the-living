@@ -80,7 +80,7 @@ void Engine::CheckInput(float deltaTime)
 		inputSystem_.GetMouseMovement(mouseDeltaX, mouseDeltaY);
 	
 		OnMouseMove(mouseDeltaX, mouseDeltaY);
-
+		if (inputSystem_.KeyDown(DIK_F3))        OnKeyDown(VK_F3);
 		if (inputSystem_.KeyDown(DIK_W))		OnKeyDown(VK_UP);
 		if (inputSystem_.KeyDown(DIK_S))		OnKeyDown(VK_DOWN);
 		if (inputSystem_.KeyDown(DIK_A))		OnKeyDown(VK_LEFT);

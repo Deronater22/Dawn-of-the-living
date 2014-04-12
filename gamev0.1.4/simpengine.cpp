@@ -36,6 +36,19 @@ void SimpleEngine::OnKeyDown(int nVirtKey)
 	{
 		switch (nVirtKey)
 		{
+		case VK_F3:   
+
+			if (gameWorld_.isDebugging()==false)
+			{
+				gameWorld_.setDebugging(true); 
+			} 
+			else if(gameWorld_.isDebugging()==true)
+			{
+				gameWorld_.setDebugging(false); 
+			}
+		
+			break;
+		
 		case VK_UP:			gameWorld_.player.speedUp   ( 2.0f);	break;
 		case VK_DOWN:		gameWorld_.player.speedUp   (-2.0f);	break;
 		case VK_RIGHT:		gameWorld_.player.speedRight( 1.0f);	break;
