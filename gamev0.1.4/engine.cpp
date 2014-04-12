@@ -80,6 +80,18 @@ void Engine::CheckInput(float deltaTime)
 		inputSystem_.GetMouseMovement(mouseDeltaX, mouseDeltaY);
 	
 		OnMouseMove(mouseDeltaX, mouseDeltaY);
+
+		//pauses game 
+		if(inputSystem_.KeyDown(DIK_P))//pause the game mac 4/12/14         
+		{	OnKeyDown(DIK_P);
+		if(isPaused() == false){setPause(true);}
+		//else if(isPaused() == true){setPause(false);}
+		}
+		if(inputSystem_.KeyDown(DIK_U))
+		{	OnKeyDown(DIK_P);
+		setPause(false);		
+		}
+
 		if (inputSystem_.KeyDown(DIK_F3))        OnKeyDown(VK_F3);
 		if (inputSystem_.KeyDown(DIK_W))		OnKeyDown(VK_UP);
 		if (inputSystem_.KeyDown(DIK_S))		OnKeyDown(VK_DOWN);
@@ -105,27 +117,28 @@ void Engine::CheckInput(float deltaTime)
 void Engine::GameCycle(float deltaTime)
 {
 	
-
+	
 	if (useDInput_)	CheckInput(deltaTime);
 
 
+	if(isPaused() == false)//if the game is not paused mac 4/12/14
+	{	
+		OnPrepare();				// setup opengl for frame (clear, identity)
 
-	OnPrepare();				// setup opengl for frame (clear, identity)
+		world().Prepare();// prepare objects and perform collisions
+		
+		
+		
+		world().AnimateParticles(deltaTime);//set up particle system mac 3/15/14
 
-	world().Prepare();// prepare objects and perform collisions
-	
-	
-	
-	world().AnimateParticles(deltaTime);//set up particle system mac 3/15/14
+		
 
-	
+		world().Animate(deltaTime);	// move/orient objects
 
-	world().Animate(deltaTime);	// move/orient objects
+		
+		world().Draw();				// draw objects
 
-	
-	world().Draw();				// draw objects
-
-
+	}
 }
 
 LRESULT Engine::EnterMessageLoop(const OGLWindow& myWindow)

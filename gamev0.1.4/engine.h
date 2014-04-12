@@ -40,7 +40,7 @@ public:
 	static const float DEFAULT_MOUSE_SENSITIVITY;
 
 	class CantBeCopied: public LCGLException {};
-	Engine() 
+	Engine():_pause(false)//don't start the game paused mac 4/12/14
 	{ 
 		useDInput_ = true; mouseSensitivity_ = DEFAULT_MOUSE_SENSITIVITY;
 	}
@@ -85,6 +85,10 @@ public:
 
 	float GetNormalizedPosX(LPARAM lParam);	// get normalized mouse coordinates
 	float GetNormalizedPosY(LPARAM lParam);	// between (-1.0 and 1.0)
+
+	bool _pause;
+	bool isPaused(){return _pause;}
+	void setPause(bool pause){_pause = pause;}//game pause function works but not well mac 4/12/14
 
 private:
 	bool useDInput_;		// true if dinput is enabled
