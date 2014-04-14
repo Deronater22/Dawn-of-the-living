@@ -28,8 +28,8 @@ enum {SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600, BIT_DEPTH = 16 };
 Engine* myEngine = NULL;
 OGLWindow myWindow ("OpenGL Game");
 bool fullScreen = false;
-const int centerX = (SCREEN_WIDTH/2) - (SCREEN_WIDTH/2);
-const int centerY = 100;
+const int centerX = (SCREEN_WIDTH/2);
+const int centerY = (SCREEN_HEIGHT/2);
 
 
 

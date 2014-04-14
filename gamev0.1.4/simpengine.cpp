@@ -31,6 +31,7 @@ void SimpleEngine::OnKeyDown(int nVirtKey)
 {
 	static const float MOUSE_SENSITIVITY_INCREMENT = 0.05f;
 	static const float MOUSE_SENSITIVITY_MINIMUM   = 0.05f;
+	static const float MOUSE_SENSITIVITY_MAXIMUM   = 2.00f;
 
 	if (!gameWorld_.IsGameDone())
 	{
@@ -54,7 +55,10 @@ void SimpleEngine::OnKeyDown(int nVirtKey)
 		case VK_RIGHT:		gameWorld_.player.speedRight( 1.0f);	break;
 		case VK_LEFT:		gameWorld_.player.speedRight(-1.0f);	break;
 		case VK_ESCAPE:		PostQuitMessage(0);									break;
-		case VK_ADD:		mouseSensitivity_ += MOUSE_SENSITIVITY_INCREMENT;	break;
+		case VK_ADD:		mouseSensitivity_ += MOUSE_SENSITIVITY_INCREMENT;
+							if (mouseSensitivity() > 2.0)
+								mouseSensitivity_ = MOUSE_SENSITIVITY_MAXIMUM;
+							break;
 		case VK_SUBTRACT:	mouseSensitivity_ -= MOUSE_SENSITIVITY_INCREMENT;
 							if (mouseSensitivity () < 0.05)	
 								mouseSensitivity_ = MOUSE_SENSITIVITY_MINIMUM;
