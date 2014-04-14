@@ -16,7 +16,8 @@ GUI::GUI(Player& player) : player_(player) ,
 				endText		("Arial",	40),
 				fps         ("Arial",	25),
 				healthIcon  ("Arial",	80),
-				health      ("Arial",   30)
+				health      ("Arial",   30),
+				_health     (100)
 			
 
 {
@@ -104,7 +105,8 @@ void GUI::Draw()
 	drawAcidIcon();
 	glColor4fv(GREEN);
 	print(healthIcon,twoDCoord<float>(-0.7f,-0.5f),"+");//draw a plus symbol for the health bar
-	print(health, twoDCoord<float> (-0.6f,-.47f),"HP: %d"  ,player_.getHealth()); //print out the player's health l_wood_s
+	//_health = player_.getHealth();
+	print(health, twoDCoord<float> (-0.6f,-.47f),"HP: %d"  ,_health); //print out the player's health l_wood_s
 	
 	glDisable(GL_BLEND);
 	glEnable(GL_TEXTURE_2D);

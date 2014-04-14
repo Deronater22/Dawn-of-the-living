@@ -84,12 +84,12 @@ void Engine::CheckInput(float deltaTime)
 		//pauses game 
 		if(inputSystem_.KeyDown(DIK_P))//pause the game mac 4/12/14         
 		{	OnKeyDown(DIK_P);
-		if(isPaused() == false){setPause(true);}
-		//else if(isPaused() == true){setPause(false);}
+			if(isPaused() == false){setPause(true);}
+			//else if(isPaused() == true){setPause(false);}
 		}
 		if(inputSystem_.KeyDown(DIK_U))
 		{	OnKeyDown(DIK_P);
-		setPause(false);		
+			setPause(false);		
 		}
 
 		if (inputSystem_.KeyDown(DIK_F3))        OnKeyDown(VK_F3);

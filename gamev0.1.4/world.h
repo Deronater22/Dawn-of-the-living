@@ -117,6 +117,7 @@ public:
 	void FadeScreen();
 	bool isDebugging(){ return _isDebug; }              //debugging functions for displaying debug info
 	void setDebugging(bool isDebug){_isDebug = isDebug;}
+	GUI& getGui(){return gui;}
 	bool IsGameDone() { return gameDone; }
 	void QuitGame()   { gameDone = true; }
 	int  GetOgros()   { return numOgros; }
