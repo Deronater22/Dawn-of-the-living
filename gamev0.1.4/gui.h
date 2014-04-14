@@ -32,6 +32,7 @@ private:
 	BillboardFont font, endText, fps,healthIcon,health;
 	Player player_;
 	Timer timer_;
+	int _health;
 
 	Texture2D crosshair_, _icon;
 
@@ -44,6 +45,7 @@ public:
 	void SetEnemiesLeft	(int eLeft)			{	enemiesLeft = eLeft;	}
 	void Draw			();
 	void Animate		(float deltaTime);
+	void updateHeath    (float damage)     {_health-damage;}//show player damage
 
 	void DrawWinner		();
 	void DrawLoser		();
