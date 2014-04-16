@@ -30,7 +30,8 @@ float Engine::GetNormalizedPosY(LPARAM lParam)
 
 void Engine::initialize (const OGLWindow& myWindow)
 {
-	pauseIcon_.load ("bill/DOTL.jpg", GL_NEAREST, SOIL_LOAD_RGBA, true, BLACK);
+	pauseIcon_.load ("bill/DOTL.bmp");//load the pause menu icon here mac 4/16/14
+
 	try
 	{
 		SetFocus (myWindow.hWND ()); //maybe this will force focus here, so that we won't need to catch exceptions?
@@ -153,7 +154,7 @@ void Engine::GameCycle(float deltaTime)
 			print(pause_menu, twoDCoord<float> (-0.425f,-0.50f),"DOTL v0.1.5 created by: DOTL Dev Team");
 
 #if Debug//set of reference points for drawing textured quads mac 4/16/14
-			//text for coords
+			//text for coordinates
 			print(pause_menu, twoDCoord<float> (0.225f,-0.1f),"X");
 			print(pause_menu, twoDCoord<float> (-0.225f,-0.1f),"X");
 			print(pause_menu, twoDCoord<float> (-0.225f,-0.4f),"X");
@@ -214,20 +215,13 @@ void Engine::drawIcon()const //draws the icon for spitting acid mac 4/5/14
 	glPointSize(15.0f);
 	glBegin(GL_POINTS);
 #else
-	glBegin(GL_QUADS);
+	glBegin(GL_QUADS);//draw points for menu icons mac 4/16/14
 #endif
-	
-	
-
-	glTexCoord2f(0.0,0.0); glVertex2f(525.0, 535.0);//bottom right
-
-
-	glTexCoord2f(1.0,0.0); glVertex2f(288.0, 535.0);//bottom left
-
-	glTexCoord2f(1.0,1.0); glVertex2f(288.0, 345.0);//top left  DONE
-	glTexCoord2f(0.0,1.0); glVertex2f(525.0, 345.0);//top right DONE
-	
-
+	//don't mess with this order for future icons mac 4/16/14
+	glTexCoord2f(0.0,1.0); glVertex2f(288.0, 345.0);//top left  DONE
+	glTexCoord2f(0.0,0.0); glVertex2f(288.0, 535.0);//bottom left
+	glTexCoord2f(1.0,0.0); glVertex2f(525.0, 535.0);//bottom right
+	glTexCoord2f(1.0,1.0); glVertex2f(525.0, 345.0);//top right DONE
 	
 
 	glEnd();
