@@ -141,6 +141,7 @@ void Engine::GameCycle(float deltaTime)
 
 		else//the pause menu implementation is here Mike && Deron
 		{
+			glDisable(GL_TEXTURE_2D);//needs this to render text mac 4/16/14
 			glClearColorv(BLACK);
 			print(pause_menu, twoDCoord<float> (-0.2f,0.27f),"-----Pause Menu----"); 
 			print(pause_menu, twoDCoord<float> (-0.21f,0.17f),"Press U to Unpause"); 
