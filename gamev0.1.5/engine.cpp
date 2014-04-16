@@ -10,6 +10,8 @@
 #include "worldCoord.h"
 #include <ctime>
 
+//#define Debug// for use of debug items mac 4/16/14
+
 using namespace lcgl;
 
 extern OGLWindow myWindow;
@@ -28,6 +30,7 @@ float Engine::GetNormalizedPosY(LPARAM lParam)
 
 void Engine::initialize (const OGLWindow& myWindow)
 {
+	pauseIcon_.load ("bill/DOTL.jpg", GL_NEAREST, SOIL_LOAD_RGBA, true, BLACK);
 	try
 	{
 		SetFocus (myWindow.hWND ()); //maybe this will force focus here, so that we won't need to catch exceptions?
@@ -124,17 +127,15 @@ void Engine::GameCycle(float deltaTime)
 
 
 		
-		OnPrepare();				// setup opengl for frame (clear, identity)
+		OnPrepare();							// setup opengl for frame (clear, identity)
 
-		world().Prepare();// prepare objects and perform collisions
+		world().Prepare();						// prepare objects and perform collisions
 		
 		
-		if( !(isPaused()))//if the game is not paused mac 4/12/14
+		if( !(isPaused()))						//if the game is not paused mac 4/12/14
 		{
 			world().AnimateParticles(deltaTime);//set up particle system mac 3/15/14
 
-		
-	
 			world().Animate(deltaTime);	// move/orient objects
 
 		
@@ -145,11 +146,22 @@ void Engine::GameCycle(float deltaTime)
 		{
 			glDisable(GL_TEXTURE_2D);//needs this to render text mac 4/16/14
 			glClearColorv(BLACK);
+			glColor4fv(GREEN);
 			print(pause_menu, twoDCoord<float> (-0.21f,0.27f),"-----Game Paused----"); 
 			print(pause_menu, twoDCoord<float> (-0.21f,0.17f),"Press U to Resume"); 
 			print(pause_menu, twoDCoord<float> (-0.225f,0.07f),"Press Escape to Quit");
 			print(pause_menu, twoDCoord<float> (-0.425f,-0.50f),"DOTL v0.1.5 created by: DOTL Dev Team");
-		
+
+#if Debug//set of reference points for drawing textured quads mac 4/16/14
+			//text for coords
+			print(pause_menu, twoDCoord<float> (0.225f,-0.1f),"X");
+			print(pause_menu, twoDCoord<float> (-0.225f,-0.1f),"X");
+			print(pause_menu, twoDCoord<float> (-0.225f,-0.4f),"X");
+			print(pause_menu, twoDCoord<float> (0.225f,-0.4f),"X");
+#endif
+			
+			
+			drawIcon();
 		}
 
 	}
@@ -178,4 +190,54 @@ LRESULT Engine::EnterMessageLoop(const OGLWindow& myWindow)
 	}
 
 	return msg.wParam;
+}
+void Engine::drawIcon()const //draws the icon for spitting acid mac 4/5/14
+{
+
+	const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
+
+	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
+	pauseIcon_.activate();
+
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+
+	gluOrtho2D(0.0, WINDOW_HI, WINDOW_WID, 0.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glDisable(GL_CULL_FACE);
+	glClear(GL_DEPTH_BUFFER_BIT);
+
+#ifdef Debug //debugging for points only
+	glColor3fv(YELLOW);
+	glPointSize(15.0f);
+	glBegin(GL_POINTS);
+#else
+	glBegin(GL_QUADS);
+#endif
+	
+	
+
+	glTexCoord2f(0.0,0.0); glVertex2f(525.0, 535.0);//bottom right
+
+
+	glTexCoord2f(1.0,0.0); glVertex2f(288.0, 535.0);//bottom left
+
+	glTexCoord2f(1.0,1.0); glVertex2f(288.0, 345.0);//top left  DONE
+	glTexCoord2f(0.0,1.0); glVertex2f(525.0, 345.0);//top right DONE
+	
+
+	
+
+	glEnd();
+
+	// Making sure we can render 3d again
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glDisable(GL_TEXTURE_2D); //disable texture so we do not mess up our scene
+
+
+
 }

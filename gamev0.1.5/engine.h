@@ -28,6 +28,7 @@
 #include "lcglexception.h"
 #include "inputsystem.h"
 #include "billboardfont.h"
+#include "texture.h"
 
 
 using namespace lcgl;
@@ -89,9 +90,11 @@ public:
 	float GetNormalizedPosY(LPARAM lParam);	// between (-1.0 and 1.0)
 
 	bool _pause;
+	lcgl::Texture2D pauseIcon_;
 	lcgl::BillboardFont pause_menu;
 	bool isPaused(){return _pause;}
 	void setPause(bool pause){_pause = pause;}//game pause function works but not well mac 4/12/14
+	void drawIcon()const;
 
 private:
 	bool useDInput_;		// true if dinput is enabled
