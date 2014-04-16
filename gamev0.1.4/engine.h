@@ -27,6 +27,7 @@
 #include "window.h"
 #include "lcglexception.h"
 #include "inputsystem.h"
+#include "billboardfont.h"
 
 
 using namespace lcgl;
@@ -40,13 +41,14 @@ public:
 	static const float DEFAULT_MOUSE_SENSITIVITY;
 
 	class CantBeCopied: public LCGLException {};
-	Engine():_pause(false)//don't start the game paused mac 4/12/14
+	Engine():_pause(false),//don't start the game paused mac 4/12/14
+		pause_menu("Arial", 30)
 	{ 
 		useDInput_ = true; mouseSensitivity_ = DEFAULT_MOUSE_SENSITIVITY;
 	}
 	void initialize (const OGLWindow& myWindow);
 
-	Engine (const Engine& other) { *this = other; }
+	//Engine (const Engine& other) { *this = other; }
 	void operator= (const Engine& other) { throw CantBeCopied (); }
 
 	LRESULT EnterMessageLoop(const OGLWindow& myWindow);
@@ -87,6 +89,7 @@ public:
 	float GetNormalizedPosY(LPARAM lParam);	// between (-1.0 and 1.0)
 
 	bool _pause;
+	lcgl::BillboardFont pause_menu;
 	bool isPaused(){return _pause;}
 	void setPause(bool pause){_pause = pause;}//game pause function works but not well mac 4/12/14
 

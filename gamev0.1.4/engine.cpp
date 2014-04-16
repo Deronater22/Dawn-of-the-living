@@ -85,8 +85,8 @@ void Engine::CheckInput(float deltaTime)
 		if(inputSystem_.KeyDown(DIK_P))//pause the game mac 4/12/14         
 		{	OnKeyDown(DIK_P);
 			if(isPaused() == false){setPause(true);}
-			//else if(isPaused() == true){setPause(false);}
 		}
+
 		if(inputSystem_.KeyDown(DIK_U))
 		{	OnKeyDown(DIK_P);
 			setPause(false);		
@@ -121,24 +121,34 @@ void Engine::GameCycle(float deltaTime)
 	if (useDInput_)	CheckInput(deltaTime);
 
 
-	if(isPaused() == false)//if the game is not paused mac 4/12/14
-	{	
+		
 		OnPrepare();				// setup opengl for frame (clear, identity)
 
 		world().Prepare();// prepare objects and perform collisions
 		
 		
-		
-		world().AnimateParticles(deltaTime);//set up particle system mac 3/15/14
+		if(isPaused() == false)//if the game is not paused mac 4/12/14
+		{
+			world().AnimateParticles(deltaTime);//set up particle system mac 3/15/14
 
 		
-
-		world().Animate(deltaTime);	// move/orient objects
+	
+			world().Animate(deltaTime);	// move/orient objects
 
 		
-		world().Draw();				// draw objects
+			world().Draw();				// draw objects
+		}
 
-	}
+		else//the pause menu implementation is here Mike && Deron
+		{
+			glClearColorv(BLACK);
+			print(pause_menu, twoDCoord<float> (-0.2f,0.27f),"-----Pause Menu----"); 
+			print(pause_menu, twoDCoord<float> (-0.21f,0.17f),"Press U to Unpause"); 
+			print(pause_menu, twoDCoord<float> (-0.225f,0.07f),"Press Escape to Exit"); 
+		
+		}
+
+
 }
 
 LRESULT Engine::EnterMessageLoop(const OGLWindow& myWindow)
