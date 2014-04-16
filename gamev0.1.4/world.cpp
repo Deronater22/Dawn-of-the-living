@@ -34,6 +34,7 @@ skybox_("media/desplain"), debug("Arial" ,25),
 theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0),gui(player),_isDebug(false)
 
 {
+
 	_timer.Init();//initialize timer for fps mac 4/12/14
 	_explosionSound.setRepeats (0);
 

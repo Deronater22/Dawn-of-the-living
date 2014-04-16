@@ -16,8 +16,8 @@ GUI::GUI(Player& player) : player_(player) ,
 				endText		("Arial",	40),
 				fps         ("Arial",	25),
 				healthIcon  ("Arial",	80),
-				health      ("Arial",   30),
-				_health     (100)
+				health      ("Arial",   30)
+				
 			
 
 {
@@ -36,6 +36,8 @@ void GUI::SetCurrentTime(float timeLeft)	// timeLeft is in seconds
 	minutesLeft = (int)(timeLeft / 60.0);	// 60 seconds in 1 minute
 	secondsLeft = (int)floor(timeLeft) % 60;
 	millisecondsLeft = (int)(timeLeft - (float)floor(timeLeft)) * 60;
+	
+	
 	
 }
 
@@ -80,6 +82,10 @@ void GUI::Draw()
 
 	
 	glColor4fv(GREEN);
+
+	_health = player_.getHealth();
+	print(health, twoDCoord<float> (-0.6f,-.47f),"HP: %d"  ,_health); //print out the player's health l_wood_s
+
 	if (secondsLeft < 10)
 	{
 		if (millisecondsLeft < 10)
@@ -101,12 +107,13 @@ void GUI::Draw()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
 	drawCrosshair();//draw the cross hair here mac 3/26/14
+
 	
+
 	drawAcidIcon();
 	glColor4fv(GREEN);
 	print(healthIcon,twoDCoord<float>(-0.7f,-0.5f),"+");//draw a plus symbol for the health bar
-	//_health = player_.getHealth();
-	print(health, twoDCoord<float> (-0.6f,-.47f),"HP: %d"  ,_health); //print out the player's health l_wood_s
+	
 	
 	glDisable(GL_BLEND);
 	glEnable(GL_TEXTURE_2D);
