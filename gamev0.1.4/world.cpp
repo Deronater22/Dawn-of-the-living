@@ -129,7 +129,7 @@ void World::Animate( float deltaTime)
 		//******************************DEBUG***************************************
 		//debug player to display accurate (current)position
 		glColor4fv(GREEN);
-		print(debug,twoDCoord<float>(-0.65f,0.48f),"---Debug DOTL v0.1.4-----------");
+		print(debug,twoDCoord<float>(-0.65f,0.48f),"---Debug DOTL v0.1.5-----------");
 		print(debug, twoDCoord<float>(-0.65f,0.44f), "Map pos: X:%4.0f Y:%4.0f Z:%4.0f" ,
 		player.position().x(), player.position().y(), player.position().z() );
 		//debug fps  mac 3/15/14

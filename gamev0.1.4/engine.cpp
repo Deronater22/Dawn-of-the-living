@@ -118,7 +118,9 @@ void Engine::GameCycle(float deltaTime)
 {
 	
 	
-	if (useDInput_)	CheckInput(deltaTime);
+	if (useDInput_)
+	{
+		CheckInput(deltaTime);
 
 
 		
@@ -127,7 +129,7 @@ void Engine::GameCycle(float deltaTime)
 		world().Prepare();// prepare objects and perform collisions
 		
 		
-		if(isPaused() == false)//if the game is not paused mac 4/12/14
+		if( !(isPaused()))//if the game is not paused mac 4/12/14
 		{
 			world().AnimateParticles(deltaTime);//set up particle system mac 3/15/14
 
@@ -143,12 +145,14 @@ void Engine::GameCycle(float deltaTime)
 		{
 			glDisable(GL_TEXTURE_2D);//needs this to render text mac 4/16/14
 			glClearColorv(BLACK);
-			print(pause_menu, twoDCoord<float> (-0.2f,0.27f),"-----Pause Menu----"); 
-			print(pause_menu, twoDCoord<float> (-0.21f,0.17f),"Press U to Unpause"); 
-			print(pause_menu, twoDCoord<float> (-0.225f,0.07f),"Press Escape to Exit"); 
+			print(pause_menu, twoDCoord<float> (-0.21f,0.27f),"-----Game Paused----"); 
+			print(pause_menu, twoDCoord<float> (-0.21f,0.17f),"Press U to Resume"); 
+			print(pause_menu, twoDCoord<float> (-0.225f,0.07f),"Press Escape to Quit");
+			print(pause_menu, twoDCoord<float> (-0.425f,-0.50f),"DOTL v0.1.5 created by: DOTL Dev Team");
 		
 		}
 
+	}
 
 }
 
