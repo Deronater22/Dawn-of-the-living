@@ -1,3 +1,7 @@
+
+#define WIN32_LEAN_AND_MEAN
+#define WIN32_EXTRA_LEAN
+
 /******************************************************
 create the terrain that the player explores 
 also push billboarded objects to add realism to the map
@@ -21,14 +25,14 @@ mac 3/16/14
 using namespace lcgl;
 
 #define DEFAULT_TERRAIN_WIDTH  500
-#define DEFAULT_R_FACTOR       0.04f
+#define DEFAULT_R_FACTOR       0.08f
 #define TERRAIN_MUL			   50.0f
-#define TEXTURE_MUL			   0.25f
+#define TEXTURE_MUL			   0.45f
 #define HEIGHT_MUL			   175.0f
 #define SCAN_DEPTH			   70.0f
 #define FOG_MIN_DEPTH          40.0f
 #define FOG_MAX_DEPTH		   550.0f
-#define EDGE_WIDTH             50.0f
+#define EDGE_WIDTH             160.0f//keeps player off the edge
 
 
 

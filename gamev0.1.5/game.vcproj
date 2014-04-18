@@ -245,6 +245,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Menu.h"
+				>
+			</File>
+			<File
 				RelativePath=".\ms3dMonster.h"
 				>
 			</File>
@@ -440,6 +444,10 @@
 						PreprocessorDefinitions=""
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Menu.cpp"
+				>
 			</File>
 			<File
 				RelativePath=".\ms3dMonster.cpp"

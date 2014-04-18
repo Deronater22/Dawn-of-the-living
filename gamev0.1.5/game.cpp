@@ -43,22 +43,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 
 	SimpleEngine *engine = NULL;
 
-	ostringstream str;
-	str << "Welcome to Dawn of the Living v 0.1.5 (Alpha) \n\nKeys:\nW - Forward\nS - Backward\nA - Left\nD - Right";
-	str << "\nLeft Mouse button shoots acid!!\nMove the mouse to look around\n\n";
-	
-	str << "Features in version: 0.1.5 \n";
-	str<< "-Particle system\n-Skybox \n-Billboarded objects\n-Acid spitting\n-Dynamic HUD\n-Acid model\n-General bug fixes\n";
-	str<<"-Enemies run towards player\n-Collisions with enemies\n-Collisions with player\n-New Soundtrack\n-Pause menu 'P''U'\n-Debug menu F3";
-	str<<"\n\n Enjoy!!\n";
-	str << "\nContributers: Mike the Monk && BeardZilla\n";
-	
-	MessageBox(NULL, str.str().c_str(), "Welcome!", MB_OK);
-
-	str.clear();
-
-	
-
 	try
 	{	
 		myWindow.initialize (hInst, SCREEN_WIDTH, SCREEN_HEIGHT, 100, 100, BIT_DEPTH, fullScreen);

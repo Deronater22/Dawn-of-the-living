@@ -1,5 +1,6 @@
 #define WIN32_LEAN_AND_MEAN
 #define WIN32_EXTRA_LEAN
+//#define Debug// for use of debug items mac 4/16/14
 
 #include <stdlib.h>
 
@@ -9,8 +10,9 @@
 #include "skybox.h"
 #include "worldCoord.h"
 #include <ctime>
+#include "Menu.h";
 
-//#define Debug// for use of debug items mac 4/16/14
+
 
 using namespace lcgl;
 
@@ -31,6 +33,7 @@ float Engine::GetNormalizedPosY(LPARAM lParam)
 void Engine::initialize (const OGLWindow& myWindow)
 {
 	pauseIcon_.load ("bill/DOTL.bmp");//load the pause menu icon here mac 4/16/14
+	info_icon.load("bill/ebs.jpg");
 
 	try
 	{
@@ -88,15 +91,21 @@ void Engine::CheckInput(float deltaTime)
 		//pauses game 
 		if(inputSystem_.KeyDown(DIK_P))//pause the game mac 4/12/14         
 		{	OnKeyDown(DIK_P);
-			if(isPaused() == false){setPause(true);}
+			setPause(true);
 		}
 
-		if(inputSystem_.KeyDown(DIK_U))
-		{	OnKeyDown(DIK_P);
-			setPause(false);		
+		if(inputSystem_.KeyDown(DIK_U))//unpause or get out of the info page mac 4/17/14
+		{	OnKeyDown(DIK_U);
+			setPause(false);
+			showInfo(false);
+		}
+		if (inputSystem_.KeyDown(DIK_I))   //shows the info page where all controls are held and developers names     
+		{		
+			OnKeyDown(DIK_I);
+			showInfo(true);
 		}
 
-		if (inputSystem_.KeyDown(DIK_F3))        OnKeyDown(VK_F3);
+		if (inputSystem_.KeyDown(DIK_F3))        OnKeyDown(VK_F3);//debug key
 		if (inputSystem_.KeyDown(DIK_W))		OnKeyDown(VK_UP);
 		if (inputSystem_.KeyDown(DIK_S))		OnKeyDown(VK_DOWN);
 		if (inputSystem_.KeyDown(DIK_A))		OnKeyDown(VK_LEFT);
@@ -108,8 +117,9 @@ void Engine::CheckInput(float deltaTime)
 		{
 			if (buttonDelta == 0.0f)
 			{
-				OnMouseDownL(0,0);
-				buttonDelta = 0.2f;//better sensitivity? mac
+				if(!(isPaused())&& !(isSinfo()) )//this is so you cant shoot while the game is paused mac 4/17/14
+					OnMouseDownL(0,0);
+					buttonDelta = 0.2f;//better sensitivity? mac
 			}
 		}
 	}
@@ -133,7 +143,7 @@ void Engine::GameCycle(float deltaTime)
 		world().Prepare();						// prepare objects and perform collisions
 		
 		
-		if( !(isPaused()))						//if the game is not paused mac 4/12/14
+		if( !(isPaused()) && !(isSinfo()))						//if the game is not paused mac 4/12/14
 		{
 			world().AnimateParticles(deltaTime);//set up particle system mac 3/15/14
 
@@ -142,27 +152,13 @@ void Engine::GameCycle(float deltaTime)
 		
 			world().Draw();				// draw objects
 		}
-
-		else//the pause menu implementation is here Mike && Deron
+		else if(isSinfo()== true)//simple information page to display controls and the developers mac 4/17 14
+		{	
+			_menu.drawInfoPage();
+		}
+		else//the pause menu implementation is here using the menu class by: Mike 
 		{
-			glDisable(GL_TEXTURE_2D);//needs this to render text mac 4/16/14
-			glClearColorv(BLACK);
-			glColor4fv(GREEN);
-			print(pause_menu, twoDCoord<float> (-0.21f,0.27f),"-----Game Paused----"); 
-			print(pause_menu, twoDCoord<float> (-0.21f,0.17f),"Press U to Resume"); 
-			print(pause_menu, twoDCoord<float> (-0.225f,0.07f),"Press Escape to Quit");
-			print(pause_menu, twoDCoord<float> (-0.425f,-0.50f),"DOTL v0.1.5 created by: DOTL Dev Team");
-
-#if Debug//set of reference points for drawing textured quads mac 4/16/14
-			//text for coordinates
-			print(pause_menu, twoDCoord<float> (0.225f,-0.1f),"X");
-			print(pause_menu, twoDCoord<float> (-0.225f,-0.1f),"X");
-			print(pause_menu, twoDCoord<float> (-0.225f,-0.4f),"X");
-			print(pause_menu, twoDCoord<float> (0.225f,-0.4f),"X");
-#endif
-			
-			
-			drawIcon();
+			_menu.drawPauseMenu();
 		}
 
 	}
@@ -192,7 +188,7 @@ LRESULT Engine::EnterMessageLoop(const OGLWindow& myWindow)
 
 	return msg.wParam;
 }
-void Engine::drawIcon()const //draws the icon for spitting acid mac 4/5/14
+void Engine::drawPauseIcon()const //draws the icon for spitting acid mac 4/5/14
 {
 
 	const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
@@ -210,7 +206,7 @@ void Engine::drawIcon()const //draws the icon for spitting acid mac 4/5/14
 	glDisable(GL_CULL_FACE);
 	glClear(GL_DEPTH_BUFFER_BIT);
 
-#ifdef Debug //debugging for points only
+#ifdef Debugv//debugging for points only
 	glColor3fv(YELLOW);
 	glPointSize(15.0f);
 	glBegin(GL_POINTS);
@@ -222,6 +218,51 @@ void Engine::drawIcon()const //draws the icon for spitting acid mac 4/5/14
 	glTexCoord2f(0.0,0.0); glVertex2f(288.0, 535.0);//bottom left
 	glTexCoord2f(1.0,0.0); glVertex2f(525.0, 535.0);//bottom right
 	glTexCoord2f(1.0,1.0); glVertex2f(525.0, 345.0);//top right DONE
+	
+
+	glEnd();
+
+	// Making sure we can render 3d again
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glDisable(GL_TEXTURE_2D); //disable texture so we do not mess up our scene
+
+
+
+}
+void Engine::drawInfoIcon()const //draws the icon for spitting acid mac 4/5/14
+{
+
+	const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
+
+	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
+	info_icon.activate();
+
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+
+	gluOrtho2D(0.0, WINDOW_HI, WINDOW_WID, 0.0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	glDisable(GL_CULL_FACE);
+	glClear(GL_DEPTH_BUFFER_BIT);
+
+#ifdef Debug //debugging for points only
+	glDisable(GL_TEXTURE_2D);
+	glColor3fv(YELLOW);
+	glPointSize(15.0f);
+	glBegin(GL_POINTS);
+#else
+	glColor4fv(WHITE);
+	glBegin(GL_QUADS);//draw points for menu icons mac 4/16/14
+#endif
+	//don't mess with this order for future icons mac 4/16/14
+	glTexCoord2f(0.0,1.0); glVertex3f(0.0, 0.0,-0.9);//top left  DONE
+	glTexCoord2f(0.0,0.0); glVertex3f(0.0, 600.0,-0.9);//bottom left
+	glTexCoord2f(1.0,0.0); glVertex3f(800.0, 600.0,-0.9);//bottom right
+	glTexCoord2f(1.0,1.0); glVertex3f(800.0, 0.0,-0.9);//top right DONE
 	
 
 	glEnd();
