@@ -11,7 +11,7 @@
 #include "Menu.h"
 #include "worldCoord.h"
 
-
+const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
 
 using namespace lcgl;
 
@@ -27,8 +27,6 @@ Menu::~Menu(void)
 }
 void Menu::drawPauseIcon()const //draws the icon for spitting acid mac 4/5/14
 {
-
-	const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
 
 	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
 	pauseIcon_.activate();
@@ -66,7 +64,6 @@ void Menu::drawPauseIcon()const //draws the icon for spitting acid mac 4/5/14
 void Menu::drawInfoIcon()const //draws the icon for spitting acid mac 4/5/14
 {
 
-	const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
 
 	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
 	info_icon.activate();
