@@ -43,6 +43,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 
 	SimpleEngine *engine = NULL;
 
+
 	try
 	{	
 		myWindow.initialize (hInst, SCREEN_WIDTH, SCREEN_HEIGHT, 100, 100, BIT_DEPTH, fullScreen);

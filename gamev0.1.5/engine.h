@@ -16,8 +16,6 @@
 
 			Adapted By: DOTL Dev Team															*/
 /************************************************************************/
-	 
-
 
 
 #include <windows.h>
@@ -27,10 +25,7 @@
 #include "window.h"
 #include "lcglexception.h"
 #include "inputsystem.h"
-#include "billboardfont.h"
-#include "texture.h"
-#include "Menu.h";
-
+#include "Menu.h"
 
 using namespace lcgl;
 
@@ -43,8 +38,8 @@ public:
 	static const float DEFAULT_MOUSE_SENSITIVITY;
 
 	class CantBeCopied: public LCGLException {};
-	Engine(): _pause(false),_info(true),//don't start the game paused mac but show info page instead 4/12/14 
-		pause_menu("Arial", 30),info_page("Arial", 30),info_font("Arial",20)
+	Engine(): _pause(false),_info(true)//don't start the game paused mac but show info page instead 4/12/14 
+		
 	{ 
 		useDInput_ = true; mouseSensitivity_ = DEFAULT_MOUSE_SENSITIVITY;
 	}
@@ -94,17 +89,13 @@ public:
 	Menu _menu;//the main DOTL menu with pause and info pages so far mac && contributions by jab
 	bool _pause;
 	bool _info;
-	lcgl::Texture2D pauseIcon_;
-	lcgl::BillboardFont pause_menu;
+
 	bool isPaused        ()          {return _pause;}
 	void setPause        (bool pause){_pause = pause;}//game pause function works but not well mac 4/12/14
 	void drawPauseIcon   ()const;
 
-	lcgl::BillboardFont info_page;//info page 
-	lcgl::BillboardFont info_font;//smaller font for info page
-	lcgl::Texture2D     info_icon;
-	bool isSinfo         ()         {return _info;}
-	void showInfo        (bool info){_info = info;}
+	bool isSinfo         ()          {return _info;}
+	void showInfo        (bool info) {_info = info;}
 	void drawInfoIcon    ()const;
 
 private:
@@ -114,6 +105,10 @@ protected:
 	float mouseSensitivity_;
 	int mouseX_;			//Why are these members, rather than things calculated in the moment? WSB
 	int mouseY_;			//They dont' actually seem to be used, but I left 'em in for now.  maybe useful later?
+
+
+
+
 };
 
 #endif

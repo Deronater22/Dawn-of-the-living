@@ -7,9 +7,11 @@
 */
 /************************************************************************/
 
-#pragma once
+
 #include "texture.h"
 #include "billboardfont.h"
+#pragma once
+
 class Menu
 {
 public:
@@ -22,7 +24,9 @@ public:
 	void drawInfoIcon    ()const;
 	void drawPauseMenu   ()const;
 	void drawInfoPage    ()const;
+
 private:
+
 	//menu textures and fonts
 	lcgl::BillboardFont info_page;//info page 
 	lcgl::BillboardFont info_font;//smaller font for info page

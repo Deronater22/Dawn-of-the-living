@@ -1,6 +1,6 @@
 #define WIN32_LEAN_AND_MEAN
 #define WIN32_EXTRA_LEAN
-//#define Debug// for use of debug items mac 4/16/14
+
 
 #include <stdlib.h>
 
@@ -10,7 +10,7 @@
 #include "skybox.h"
 #include "worldCoord.h"
 #include <ctime>
-#include "Menu.h";
+#include "Menu.h"
 
 
 
@@ -32,14 +32,12 @@ float Engine::GetNormalizedPosY(LPARAM lParam)
 
 void Engine::initialize (const OGLWindow& myWindow)
 {
-	pauseIcon_.load ("bill/DOTL.bmp");//load the pause menu icon here mac 4/16/14
-	info_icon.load("bill/ebs.jpg");
 
 	try
 	{
 		SetFocus (myWindow.hWND ()); //maybe this will force focus here, so that we won't need to catch exceptions?
-									 //HEY, IT WORKS!  If you're doing something else while this starts,
-									 // it grabs focus and does not then fail to initialize.
+		//HEY, IT WORKS!  If you're doing something else while this starts,
+		// it grabs focus and does not then fail to initialize.
 		inputSystem_.Initialize(myWindow.hWND(), (HINSTANCE)GetModuleHandle(NULL), true, IS_USEKEYBOARD | IS_USEMOUSE);
 		inputSystem_.Acquire();
 		inputSystem_.Update();
@@ -49,19 +47,19 @@ void Engine::initialize (const OGLWindow& myWindow)
 	catch (InputSystem::CantCreate&)
 	{
 		MessageBox (myWindow.hWND(), "Can't create InputSystem.  Try making sure this program has focus when you start it.",
-					"Fatal error", MB_OK);
+			"Fatal error", MB_OK);
 		exit (-1);
 	}
 	catch (Keyboard::CantCreate&)
 	{
 		MessageBox (myWindow.hWND(), "Can't create Keyboard handler.  Try making sure this program has focus when you start it.",
-					"Fatal error", MB_OK);
+			"Fatal error", MB_OK);
 		exit (-1);
 	}
 	catch (Mouse::CantCreate&)
 	{
 		MessageBox (myWindow.hWND(), "Can't create Mouse handler.  Try making sure this program has focus when you start it.",
-					"Fatal error", MB_OK);
+			"Fatal error", MB_OK);
 		exit (-1);
 	}
 }
@@ -85,19 +83,19 @@ void Engine::CheckInput(float deltaTime)
 
 		// retrieve the latest mouse movements
 		inputSystem_.GetMouseMovement(mouseDeltaX, mouseDeltaY);
-	
+
 		OnMouseMove(mouseDeltaX, mouseDeltaY);
 
 		//pauses game 
 		if(inputSystem_.KeyDown(DIK_P))//pause the game mac 4/12/14         
 		{	OnKeyDown(DIK_P);
-			setPause(true);
+		setPause(true);
 		}
 
 		if(inputSystem_.KeyDown(DIK_U))//unpause or get out of the info page mac 4/17/14
 		{	OnKeyDown(DIK_U);
-			setPause(false);
-			showInfo(false);
+		setPause(false);
+		showInfo(false);
 		}
 		if (inputSystem_.KeyDown(DIK_I))   //shows the info page where all controls are held and developers names     
 		{		
@@ -119,7 +117,7 @@ void Engine::CheckInput(float deltaTime)
 			{
 				if(!(isPaused())&& !(isSinfo()) )//this is so you cant shoot while the game is paused mac 4/17/14
 					OnMouseDownL(0,0);
-					buttonDelta = 0.2f;//better sensitivity? mac
+				buttonDelta = 0.2f;//better sensitivity? mac
 			}
 		}
 	}
@@ -130,33 +128,31 @@ void Engine::CheckInput(float deltaTime)
 
 void Engine::GameCycle(float deltaTime)
 {
-	
-	
+
+
 	if (useDInput_)
 	{
 		CheckInput(deltaTime);
 
-
-		
 		OnPrepare();							// setup opengl for frame (clear, identity)
 
 		world().Prepare();						// prepare objects and perform collisions
-		
-		
+
+
 		if( !(isPaused()) && !(isSinfo()))						//if the game is not paused mac 4/12/14
 		{
 			world().AnimateParticles(deltaTime);//set up particle system mac 3/15/14
 
 			world().Animate(deltaTime);	// move/orient objects
 
-		
+
 			world().Draw();				// draw objects
 		}
-		else if(isSinfo()== true)//simple information page to display controls and the developers mac 4/17 14
+		else if(isSinfo()== true)		//simple information page to display controls and the developers mac 4/17 14
 		{	
 			_menu.drawInfoPage();
 		}
-		else//the pause menu implementation is here using the menu class by: Mike 
+		else							//the pause menu implementation is here using the menu class by: Mike 
 		{
 			_menu.drawPauseMenu();
 		}
@@ -182,97 +178,9 @@ LRESULT Engine::EnterMessageLoop(const OGLWindow& myWindow)
 			if (!GetMessage (&msg, NULL, 0, 0))	return msg.wParam;
 
 			TranslateMessage (&msg);
-   			DispatchMessage (&msg);
+			DispatchMessage (&msg);
 		}
 	}
 
 	return msg.wParam;
-}
-void Engine::drawPauseIcon()const //draws the icon for spitting acid mac 4/5/14
-{
-
-	const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
-
-	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
-	pauseIcon_.activate();
-
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-
-	gluOrtho2D(0.0, WINDOW_HI, WINDOW_WID, 0.0);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glDisable(GL_CULL_FACE);
-	glClear(GL_DEPTH_BUFFER_BIT);
-
-#ifdef Debugv//debugging for points only
-	glColor3fv(YELLOW);
-	glPointSize(15.0f);
-	glBegin(GL_POINTS);
-#else
-	glBegin(GL_QUADS);//draw points for menu icons mac 4/16/14
-#endif
-	//don't mess with this order for future icons mac 4/16/14
-	glTexCoord2f(0.0,1.0); glVertex2f(288.0, 345.0);//top left  DONE
-	glTexCoord2f(0.0,0.0); glVertex2f(288.0, 535.0);//bottom left
-	glTexCoord2f(1.0,0.0); glVertex2f(525.0, 535.0);//bottom right
-	glTexCoord2f(1.0,1.0); glVertex2f(525.0, 345.0);//top right DONE
-	
-
-	glEnd();
-
-	// Making sure we can render 3d again
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glDisable(GL_TEXTURE_2D); //disable texture so we do not mess up our scene
-
-
-
-}
-void Engine::drawInfoIcon()const //draws the icon for spitting acid mac 4/5/14
-{
-
-	const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
-
-	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
-	info_icon.activate();
-
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-
-	gluOrtho2D(0.0, WINDOW_HI, WINDOW_WID, 0.0);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glDisable(GL_CULL_FACE);
-	glClear(GL_DEPTH_BUFFER_BIT);
-
-#ifdef Debug //debugging for points only
-	glDisable(GL_TEXTURE_2D);
-	glColor3fv(YELLOW);
-	glPointSize(15.0f);
-	glBegin(GL_POINTS);
-#else
-	glColor4fv(WHITE);
-	glBegin(GL_QUADS);//draw points for menu icons mac 4/16/14
-#endif
-	//don't mess with this order for future icons mac 4/16/14
-	glTexCoord2f(0.0,1.0); glVertex3f(0.0, 0.0,-0.9);//top left  DONE
-	glTexCoord2f(0.0,0.0); glVertex3f(0.0, 600.0,-0.9);//bottom left
-	glTexCoord2f(1.0,0.0); glVertex3f(800.0, 600.0,-0.9);//bottom right
-	glTexCoord2f(1.0,1.0); glVertex3f(800.0, 0.0,-0.9);//top right DONE
-	
-
-	glEnd();
-
-	// Making sure we can render 3d again
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glDisable(GL_TEXTURE_2D); //disable texture so we do not mess up our scene
-
-
-
 }

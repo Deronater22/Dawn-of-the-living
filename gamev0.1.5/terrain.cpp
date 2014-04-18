@@ -1,7 +1,3 @@
-
-#define WIN32_LEAN_AND_MEAN
-#define WIN32_EXTRA_LEAN
-
 /******************************************************
 create the terrain that the player explores 
 also push billboarded objects to add realism to the map
@@ -32,7 +28,7 @@ using namespace lcgl;
 #define SCAN_DEPTH			   70.0f
 #define FOG_MIN_DEPTH          40.0f
 #define FOG_MAX_DEPTH		   550.0f
-#define EDGE_WIDTH             160.0f//keeps player off the edge
+#define EDGE_WIDTH             170.0f
 
 
 

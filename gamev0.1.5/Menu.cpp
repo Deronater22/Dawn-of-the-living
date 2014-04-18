@@ -1,15 +1,11 @@
 /************************************************************************/
-/* Menu.h
+/* Menu.cpp
 	Description: adds standard pause and information menus to the game 
 	More to come later?
 	written by: Michael Carey 4/17/14
 	CC: Joe Bailey
 */
 /************************************************************************/
-
-
-
-
 
 
 #include "Menu.h"
@@ -47,19 +43,9 @@ void Menu::drawPauseIcon()const //draws the icon for spitting acid mac 4/5/14
 	glDisable(GL_CULL_FACE);
 	glClear(GL_DEPTH_BUFFER_BIT);
 
-#ifdef Debugv//debugging for points only
-	glColor3fv(YELLOW);
-	glPointSize(15.0f);
-	glBegin(GL_POINTS);
-#else
 	glColor3fv(GREY);
 	glBegin(GL_QUADS);//draw points for menu icons mac 4/16/14
-#endif
-	////don't mess with this order for future icons mac 4/16/14
-	//glTexCoord2f(0.0,1.0); glVertex2f(288.0, 345.0);//top left  DONE
-	//glTexCoord2f(0.0,0.0); glVertex2f(288.0, 535.0);//bottom left
-	//glTexCoord2f(1.0,0.0); glVertex2f(525.0, 535.0);//bottom right
-	//glTexCoord2f(1.0,1.0); glVertex2f(525.0, 345.0);//top right DONE
+
 	//don't mess with this order for future icons mac 4/16/14
 	glTexCoord2f(0.0,1.0); glVertex3f(0.0, 0.0,-0.994);//top left  DONE
 	glTexCoord2f(0.0,0.0); glVertex3f(0.0, 600.0,-0.994);//bottom left
