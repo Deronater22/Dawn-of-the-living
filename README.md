@@ -16,6 +16,10 @@ L_Woood-s aka: Spider-Man
 
 Anthony_bourdain aka: Ash-Ketchum
 
+<<<<<<< HEAD
 La_Nicole aka: Dr. Girlfriend
+=======
+La_Nicole aka: Dr. Girlfriend 
+>>>>>>> 66262034d083a394f6b6a207513b64d071745b4d
 
 D_Russ aka: Jack Russell Terrier
