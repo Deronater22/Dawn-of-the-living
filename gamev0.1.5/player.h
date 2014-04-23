@@ -41,10 +41,10 @@ protected:
 	void OnPrepare ()	{ ProcessCollisions(this);   } //Seems like we should!
 
 	lcgl::Direction _direction;
-	//lcgl::Sound _pain;,_pain("sounds//2scream.wav")
+	lcgl::Sound _pain;
 
 public:
-	Player(World* world = NULL) : Object (world, PLAYER_SIZE),_health(100) { terrain = NULL; acidSound = NULL;  }
+	Player(World* world = NULL) : _pain("sounds//dyinggroan.wav"), Object (world, PLAYER_SIZE),_health(100) { terrain = NULL; acidSound = NULL;  }
 	~Player() {}
 	Player (const Player&);
 	

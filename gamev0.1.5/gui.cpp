@@ -48,10 +48,10 @@ void GUI::DrawWinner()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glColor4fv(Color(0.3f, 1.0f, 0.3f, 0.8f));
-	print(endText, twoDCoord<float> (-0.25f, 0.15f), "YOU WIN!");
+	print(endText, twoDCoord<float> (-0.15f, 0.15f), "YOU WIN!");
 
 	glColor4fv(Color(1.0f, 1.0f, 1.0f, 0.8f));
-	print(endText, twoDCoord<float> (-0.5f, 0.2f), "Press the ESC key to exit");
+	print(endText, twoDCoord<float> (-0.4f, 0.2f), "Press the ESC key to exit");
 	
 	glDisable(GL_BLEND);
 	glEnable(GL_TEXTURE_2D);

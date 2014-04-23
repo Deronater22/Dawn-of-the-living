@@ -26,7 +26,7 @@ using namespace lcgl;
 using namespace std;
 
 World* world = NULL;
-Player::Player(const Player& thePlayer) : Object (world, PLAYER_SIZE),_health(100)
+Player::Player(const Player& thePlayer) : _pain("sounds//dyinggroan.wav"), Object (world, PLAYER_SIZE),_health(100)
 {
 	 terrain = NULL; acidSound = NULL; 
 }
@@ -84,7 +84,7 @@ void Player::OnCollision(Object *collisionObject)
 		|| typeid(*collisionObject)== typeid(MS3DMonster))//fixed collision with player mac 4/3/14
 	{
 
-		//_pain.play();//possibly play pain sound here? mac
+		_pain.play();//possibly play pain sound here? mac
 	    _health-=0.001f;//is player taking damage? mac 4/7/14
 		world_->getGui().updateHeath(0.001);
 		if (velocity().z() > 0.0) velocity_ = NULL_VECTOR; 
