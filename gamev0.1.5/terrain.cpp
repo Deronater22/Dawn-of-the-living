@@ -13,24 +13,40 @@ mac 3/16/14
 #include "lcglmath.h"
 #include "skybox.h"
 #include "EnviroObj.h"
-#include<algorithm>
-#include<ctime>
+#include <algorithm>
+#include <ctime>
 #include "light.h"
+#include "FastCpu.h"
 
 
-using namespace lcgl;
+#ifdef FAST_CPU //helps with releases or debug mac 4/22/14 
 
 #define DEFAULT_TERRAIN_WIDTH  500
-#define DEFAULT_R_FACTOR       0.08f
+#define DEFAULT_R_FACTOR       0.04f
 #define TERRAIN_MUL			   50.0f
-#define TEXTURE_MUL			   0.3f
+#define TEXTURE_MUL			   0.45f
 #define HEIGHT_MUL			   175.0f
-#define SCAN_DEPTH			   65.0f
+#define SCAN_DEPTH			   70.0f
 #define FOG_MIN_DEPTH          40.0f
 #define FOG_MAX_DEPTH		   550.0f
-#define EDGE_WIDTH             170.0f
+#define EDGE_WIDTH			   200.0f
 
+#else
 
+#define DEFAULT_TERRAIN_WIDTH  500
+#define DEFAULT_R_FACTOR       0.04f
+#define TERRAIN_MUL			   50.0f
+#define TEXTURE_MUL			   0.20f
+#define HEIGHT_MUL			   175.0f
+#define SCAN_DEPTH			   45.0f
+#define FOG_MIN_DEPTH          40.0f
+#define FOG_MAX_DEPTH		   350.0f
+#define EDGE_WIDTH			   200.0f
+
+#endif
+
+        
+using namespace lcgl;
 
 Terrain::Terrain (int w=DEFAULT_TERRAIN_WIDTH, float rFactor=DEFAULT_R_FACTOR):
 
@@ -118,8 +134,14 @@ void Terrain::OnDraw(const Player& p)
 	myFog.setDensity(0.0010f);
 	myFog.setMode(GL_LINEAR);
 	myFog.setRange (FOG_MIN_DEPTH, FOG_MAX_DEPTH);		//setup fog min and max range
-	myFog.setHint (GL_NICEST);
 
+#ifdef FAST_CPU//prefer faster fog on slow CPUs mac 
+
+	myFog.setHint (GL_NICEST);
+#else
+
+	myFog.setHint (GL_FASTEST);
+#endif
 	
 	/*******************************************************
 	Add enviroObjs here 
@@ -132,8 +154,16 @@ void Terrain::OnDraw(const Player& p)
 
 
 	//draw patches of dried grass
-	Populate(4, locations_ );//creates a list of legitimate locations for objects
+#ifdef FAST_CPU
 	envGrass_.setSize(10);
+	Populate(4, locations_ );//creates a list of legitimate locations for objects
+#else
+	envGrass_.setSize(8);
+	Populate(2, locations_ );//creates a list of legitimate locations for objects
+
+#endif
+	
+	
 
 	for ( int i=0;i < (signed)locations_.size ();i++)
 	{

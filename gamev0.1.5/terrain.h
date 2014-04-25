@@ -64,12 +64,12 @@ private:
 	
 	std::vector<worldCoord> locations_;//possible positions stored here 
 
-	float RangedRandom(float v1,float v2);
-	void NormalizeTerrain(float field[],int size);
-	void FilterHeightBand(float *band,int stride,int count,float filter);
-	void FilterHeightField(float field[],int size,float filter);
-	void MakeTerrainPlasma(float field[],int size,float rough);
-	void BuildTerrain(int width, float rFactor);
+	float RangedRandom		(float v1,float v2);
+	void NormalizeTerrain	(float field[],int size);
+	void FilterHeightBand	(float *band,int stride,int count,float filter);
+	void FilterHeightField	(float field[],int size,float filter);
+	void MakeTerrainPlasma	(float field[],int size,float rough);
+	void BuildTerrain       (int width, float rFactor);
 
 protected:
 
@@ -89,7 +89,6 @@ public:
 	
 	Terrain (int width, float rFactor);
 	Terrain (const Terrain& other) : Object (other) {} //throws exception
-	void operator= (const Terrain& other) { Object::operator= (other); } //throws exception
 	~Terrain() { delete [] heightMap; }
 
 	void Load	() {}
@@ -98,29 +97,29 @@ public:
 	// terrain doesn't move, so no physics animations
 	void OnAnimate(float deltaTime) {}
 	
-	 
-	void Populate(int heightOffGround,     std::vector<worldCoord>& input);//array of possible locations
+	void Populate(int heightOffGround, std::vector<worldCoord>& input);//array of possible locations
 	
 	void OnDraw(const Player& player);
 	void OnCollision(Object *collisionObject);
 
 	float GetHeight		(double x, double z);
-	 float GetHeightH (float x, float z) const;
+	float GetHeightH    (float x, float z) const;
 
 
-	float GetWidth		() { return float(width);	}
-	float GetMul		() { return terrainMul;		}
-	float GetScanDepth	() { return scanDepth;		}
-	float edgeWidth     () const { return _edgeWidth; }
+	float GetWidth		        () { return float(width);	}
+	const float& GetMul		    () { return terrainMul;		}
+	const float& GetScanDepth	() { return scanDepth;		}
+	const float& edgeWidth      () const { return _edgeWidth; }
 	
 
-	inline worldCoord& getLocations(int index){ return locations_[index]; }					//for getting a location out of the locations vector
-	inline const worldCoord& getLocations(int index) const { return locations_[index]; }	//can be called on a const obj
-	inline void clearLocations(){  locations_.clear();}										//adds fps by releasing vector memory
+	worldCoord getLocations       (int index)       { return locations_[index]; }			//for getting a location out of the locations vector
+	const worldCoord& getLocations(int index) const { return locations_[index]; }			//can be called on a const obj
+	void clearLocations           ()                {  locations_.clear();}					//adds fps by releasing vector memory
 
 
 	GLuint  g_indexArray[MAP_X * MAP_Z * 2];    // vertex array
 
+	void operator= (const Terrain& other) { Object::operator= (other); } //throws exception
 };
 
 #endif

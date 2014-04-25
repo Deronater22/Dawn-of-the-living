@@ -34,7 +34,7 @@ class Player : public Object
 private:
 	Terrain* terrain;
 	Sound*   acidSound;
-	int _health; 
+	float _health; 
 protected:
 	void OnCollision (Object *collisionObject);
 
@@ -66,7 +66,8 @@ public:
 	
 	void SetTerrain	 (Terrain *t) { terrain = t; }
 
-	inline int getHealth(){return _health;} //get player's current health
+	float getHealth(){return _health;} //get player's current health
+
 	void FireWeapon	 ();
 
 	void Animate (float deltaTime);

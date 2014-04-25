@@ -148,11 +148,11 @@ void Engine::GameCycle(float deltaTime)
 
 			world().Draw();				// draw objects
 		}
-		else if(isSinfo()== true)		//simple information page to display controls and the developers mac 4/17 14
+		else if(isSinfo()== true)//simple information page to display controls and the developers mac 4/17 14
 		{	
 			_menu.drawInfoPage();
 		}
-		else							//the pause menu implementation is here using the menu class by: Mike 
+		else//the pause menu implementation is here using the menu class by: Mike 
 		{
 			_menu.drawPauseMenu();
 		}

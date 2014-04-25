@@ -1,9 +1,9 @@
 /************************************************************************/
-/* Menu.h
+/* 
+	Menu.h
 	Description: adds standard pause and information menus to the game 
 	More to come later?
 	written by: Michael Carey 4/17/14
-	CC: Joe Bailey
 */
 /************************************************************************/
 
@@ -11,6 +11,9 @@
 #include "texture.h"
 #include "billboardfont.h"
 #pragma once
+
+
+extern const int WINDOW_HI , WINDOW_WID; //window parameters
 
 class Menu
 {
@@ -28,9 +31,10 @@ public:
 private:
 
 	//menu textures and fonts
-	lcgl::BillboardFont info_page;//info page 
-	lcgl::BillboardFont info_font;//smaller font for info page
-	lcgl::Texture2D     info_icon;
-	lcgl::Texture2D pauseIcon_;
-	lcgl::BillboardFont pause_menu;
+	lcgl::BillboardFont  info_page;  //info page 
+	lcgl::BillboardFont  info_font;  //smaller font for info page
+	lcgl::Texture2D      info_icon;
+
+	lcgl::Texture2D      pauseIcon_;
+	lcgl::BillboardFont  pause_menu;
 };
