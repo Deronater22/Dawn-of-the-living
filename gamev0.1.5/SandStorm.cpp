@@ -125,6 +125,7 @@ void Sandstorm::Render()
 void Sandstorm::InitializeSystem()
 {
 	sandTex.load ("bill/sandparticle.bmp", GL_NEAREST, SOIL_LOAD_RGBA, true, BLACK);
+	sandTex.buildMipmaps();
 	
 	// parent does the remaining initialization
 	ParticleSystem::InitializeSystem();

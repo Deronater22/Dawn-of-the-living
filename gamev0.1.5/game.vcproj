@@ -241,6 +241,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FastCpu.h"
+				>
+			</File>
+			<File
 				RelativePath="gui.h"
 				>
 			</File>

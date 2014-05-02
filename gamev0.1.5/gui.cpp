@@ -84,7 +84,7 @@ void GUI::Draw()
 	glColor4fv(GREEN);
 
 	_health = player_.getHealth();
-	print(health, twoDCoord<float> (-0.6f,-.47f),"HP: %d"  ,_health); //print out the player's health l_wood_s
+	print(health, twoDCoord<float> (-0.6f,-.47f),"HP: %4.0f"  ,_health); //print out the player's health l_wood_s
 
 	if (secondsLeft < 10)
 	{

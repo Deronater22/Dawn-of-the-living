@@ -1,10 +1,6 @@
 /****************************************************************************
 
- 
- Author   :   Dave Astle
- Date     :   3/17/2001
-
- Written for OpenGL Game Programming
+ Adapted By: DOTL DEV TEAM
 *****************************************************************************/
 #ifndef __EXPLOSION_H_INCLUDED__
 #define __EXPLOSION_H_INCLUDED__
@@ -15,11 +11,11 @@
 
 using namespace lcgl;
 
-const worldCoord PARTICLE_VELOCITY  (0.0f, 2.0f, 0.0f);
-const worldCoord VELOCITY_VARIATION  (4.0f, 4.0f, 4.0f);
+const worldCoord PARTICLE_VELOCITY      (0.0f, 2.0f, 0.0f);
+const worldCoord VELOCITY_VARIATION     (4.0f, 4.0f, 4.0f);
 const worldCoord PARTICLE_ACCELERATION  (0.0f, -5.0f, 0.0f);
-const float     PARTICLE_SIZE      = 5.0f;
-const float     SIZE_VARIATION     = 2.0f;
+const float      PARTICLE_SIZE  = 5.0f;
+const float      SIZE_VARIATION = 2.0f;
 
 class Explosion : public ParticleSystem
 {

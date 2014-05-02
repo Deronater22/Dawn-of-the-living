@@ -86,7 +86,7 @@ void Player::OnCollision(Object *collisionObject)
 
 		_pain.play();//possibly play pain sound here? mac
 	    _health-=0.001f;//is player taking damage? mac 4/7/14
-		world_->getGui().updateHeath(0.001);
+		world_->getGui().updateHeath(0.001f);
 		if (velocity().z() > 0.0) velocity_ = NULL_VECTOR; 
 		position_.z()= position().z() - 1;//push player back from enemies mac 4/3/14
 		
