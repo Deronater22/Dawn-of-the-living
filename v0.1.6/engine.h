@@ -42,8 +42,8 @@ public:
 	static const float DEFAULT_MOUSE_SENSITIVITY;
 
 	class CantBeCopied: public LCGLException {};
-	Engine():_pause(false),//don't start the game paused mac 4/12/14
-		pause_menu("Arial", 30)
+	Engine():_pause(true),//don't start the game paused mac 4/12/14
+		pause_menu("Arial", 20)
 	{ 
 		useDInput_ = true; mouseSensitivity_ = DEFAULT_MOUSE_SENSITIVITY;
 	}

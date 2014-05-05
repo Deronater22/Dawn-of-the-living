@@ -1,10 +1,7 @@
 /****************************************************************************
  Particles.h  Particle and particle system base classes.
  
- Author   :   Dave Astle
- Date     :   2/1/2001
-
- Written for OpenGL Game Programming
+ Adopted by DOTL Dev Team
 *****************************************************************************/
 
 #include <windows.h>

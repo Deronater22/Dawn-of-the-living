@@ -44,10 +44,10 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	SimpleEngine *engine = NULL;
 
 	ostringstream str;
-	str << "Welcome to Dawn of the Living v 0.1.5 (Alpha) \n\nKeys:\nW - Forward\nS - Backward\nA - Left\nD - Right";
+	str << "Welcome to Dawn of the Living v 0.1.6 (Alpha) \n\nKeys:\nW - Forward\nS - Backward\nA - Left\nD - Right";
 	str << "\nLeft Mouse button shoots acid!!\nMove the mouse to look around\n\n";
 	
-	str << "Features in version: 0.1.5 \n";
+	str << "Features in version: 0.1.6 \n";
 	str<< "-Particle system\n-Skybox \n-Billboarded objects\n-Acid spitting\n-Dynamic HUD\n-Acid model\n-General bug fixes\n";
 	str<<"-Enemies run towards player\n-Collisions with enemies\n-Collisions with player\n-New Soundtrack\n-Pause menu 'P''U'\n-Debug menu F3";
 	str<<"\n\n Enjoy!!\n";
@@ -62,7 +62,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow)
 	try
 	{	
 		myWindow.initialize (hInst, SCREEN_WIDTH, SCREEN_HEIGHT, 100, 100, BIT_DEPTH, fullScreen);
-		SetWindowText(myWindow.hWND(), "Dawn Of The Living v 0.1.5"); 
+		SetWindowText(myWindow.hWND(), "Dawn Of The Living v 0.1.6"); 
 		engine = new SimpleEngine (SCREEN_WIDTH, SCREEN_HEIGHT); //WSB: definitely remove redundant params in these 2 lines!
 		engine->initialize (myWindow);
 		myEngine = engine; //for use in WndProc -- for now WSB

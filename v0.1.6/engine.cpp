@@ -95,6 +95,8 @@ void Engine::CheckInput(float deltaTime)
 		{	OnKeyDown(DIK_P);
 			setPause(false);		
 		}
+
+		if (inputSystem_.KeyDown(DIK_ESCAPE))	OnKeyDown(VK_ESCAPE);
 		if(!(isPaused()))
 		{
 			if (inputSystem_.KeyDown(DIK_F3))        OnKeyDown(VK_F3);
@@ -104,7 +106,7 @@ void Engine::CheckInput(float deltaTime)
 			if (inputSystem_.KeyDown(DIK_D))		OnKeyDown(VK_RIGHT);
 			if (inputSystem_.KeyDown(DIK_ADD))		OnKeyDown(VK_ADD);
 			if (inputSystem_.KeyDown(DIK_SUBTRACT))	OnKeyDown(VK_SUBTRACT);
-			if (inputSystem_.KeyDown(DIK_ESCAPE))	OnKeyDown(VK_ESCAPE);
+			
 			if (inputSystem_.ButtonDown(Mouse::LEFT))
 			{
 				if (buttonDelta == 0.0f)
@@ -147,16 +149,35 @@ void Engine::GameCycle(float deltaTime)
 			world().Draw();				// draw objects
 		}
 
-		else//the pause menu implementation is here Mike && Deron
+		else//the pause menu implementation is here Mac
 		{
 			drawIcon();
 			glDisable(GL_TEXTURE_2D);//needs this to render text mac 4/16/14
 			glClearColorv(BLACK);
 			glColor4fv(GREEN);
-			print(pause_menu, twoDCoord<float> (-0.21f,0.27f),"-----Game Paused----"); 
+			/*print(pause_menu, twoDCoord<float> (-0.21f,0.27f),"-----Game Paused----"); 
 			print(pause_menu, twoDCoord<float> (-0.21f,0.17f),"Press U to Resume"); 
 			print(pause_menu, twoDCoord<float> (-0.225f,0.07f),"Press Escape to Quit");
-			print(pause_menu, twoDCoord<float> (-0.425f,-0.50f),"DOTL v0.1.5 created by: DOTL Dev Team");
+			print(pause_menu, twoDCoord<float> (-0.425f,-0.50f),"DOTL v0.1.6 created by: DOTL Dev Team");*/
+
+
+			//pause and info page mac 5/5/14
+			print(pause_menu, twoDCoord<float> (-0.6f,0.27f),"-----Objectives----");//show current objectives
+			print(pause_menu, twoDCoord<float> (-0.68f,0.22f),"Show the humans whose boss!");
+			print(pause_menu, twoDCoord<float> (-0.62f,0.18f),"Explore and have fun!");
+
+			print(pause_menu, twoDCoord<float> (0.34f,0.27f),"-----Controls----");//show game controls
+			print(pause_menu, twoDCoord<float> (0.25f,0.22f),"WSAD Keys:Zombie Control"); 
+			print(pause_menu, twoDCoord<float> (0.26f,0.18f),"Left Mouse:Action Control"); 
+			print(pause_menu, twoDCoord<float> (0.26f,0.14f),"-+ Keys: Mouse Sensitivity");
+			print(pause_menu, twoDCoord<float> (0.26f,0.1f),"P Key: Pause Game"); 
+			print(pause_menu, twoDCoord<float> (0.26f,0.06f),"U Key: Resume/Start Game"); 
+			print(pause_menu, twoDCoord<float> (0.26f,0.02f),"ESC Key: Exit Game"); 
+			print(pause_menu, twoDCoord<float> (-0.325f,-0.50f),"DOTL v0.1.5 created by: DOTL Dev Team");
+
+
+
+
 
 #if Debug//set of reference points for drawing textured quads mac 4/16/14
 			//text for coordinates

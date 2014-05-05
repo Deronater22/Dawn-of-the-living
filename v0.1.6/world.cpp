@@ -26,7 +26,7 @@ enum {PLAYER_ELEVATION = 14};	 //How far above the map does the camera stay?
 
 using namespace lcgl;
 
-static const worldCoord STARTING_PLAYER_POSITION (0, 0, 0);
+static const worldCoord STARTING_PLAYER_POSITION (346, 181, 396);
 
 World::World(int w, int h) : _worldTrack ("sounds//darksiege.mid"),_ambient("ambient.wav"),
 _explosionSound ("sounds/slimesplash.wav"), terrain (32, 1.0f),
@@ -35,7 +35,7 @@ theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0),gui(player),_isDebug(false)
 
 {
 
-	_timer.Init();//initialize timer for fps mac 4/12/14
+	_timer.Init();									//initialize timer for fps mac 4/12/14
 	_explosionSound.setRepeats (0);
 
 	SetScreen (w, h);
@@ -50,8 +50,8 @@ theSand_(1500, worldCoord(4,-6, -4), 5.0, 5.0, 5.0),gui(player),_isDebug(false)
 	player.SetWorld (this); terrain.SetWorld(this);
 	player.SetTerrain(&terrain);
 
-	_worldTrack.loopForever ();	 _worldTrack.play (); //world music track
-	_ambient.loopForever    ();  _ambient.play();//ambient sounds
+	_worldTrack.loopForever ();	 _worldTrack.play ();	//world music track mac 5/5/14
+	_ambient.loopForever    ();  _ambient.play();		//ambient sounds
 
 	LoadWorld();
 
@@ -129,7 +129,7 @@ void World::Animate( float deltaTime)
 		//******************************DEBUG***************************************
 		//debug player to display accurate (current)position
 		glColor4fv(GREEN);
-		print(debug,twoDCoord<float>(-0.65f,0.48f),"---Debug DOTL v0.1.5-----------");
+		print(debug,twoDCoord<float>(-0.65f,0.48f),"---Debug DOTL v0.1.6-----------");
 		print(debug, twoDCoord<float>(-0.65f,0.44f), "Map pos: X:%4.0f Y:%4.0f Z:%4.0f" ,
 		player.position().x(), player.position().y(), player.position().z() );
 		//debug fps  mac 3/15/14
