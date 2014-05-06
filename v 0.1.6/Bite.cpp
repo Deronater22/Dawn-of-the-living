@@ -1,3 +1,14 @@
+
+//   ______   ______   _________  __          
+//  /_____/\ /_____/\ /________/\/_/\         
+//  \:::_ \ \\:::_ \ \\__.::.__\/\:\ \        
+//   \:\ \ \ \\:\ \ \ \  \::\ \   \:\ \       
+//    \:\ \ \ \\:\ \ \ \  \::\ \   \:\ \____  
+//     \:\/.:| |\:\_\ \ \  \::\ \   \:\/___/\ 
+//      \____/_/ \_____\/   \__\/    \_____\/ 
+//        by DNT
+
+
 #include <windows.h>
 #include <gl/gl.h>
 #include <math.h>
@@ -9,6 +20,13 @@
 #include "gui.h"
 
 using namespace lcgl;
+
+/***********************
+Bite.cpp
+players secondary weapon
+adapted by Dotl Dev Team 
+
+***********************/
 
 class MS3DMonster;
 
@@ -54,8 +72,7 @@ void Bite::OnAnimate(float deltaTime)
 	if (_isJawsClosed)		_JawsClosed->Update(deltaTime);
 
 	else if (_distanceTraveled >= 5.0f)	//close the jaws if it goes too far
-											//I don't know why we would do this
-											//but ok
+										
 	{
 		_isJawsClosed = true;
 		stop();

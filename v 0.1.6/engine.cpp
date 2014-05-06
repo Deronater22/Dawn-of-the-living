@@ -74,7 +74,7 @@ void Engine::initialize (const OGLWindow& myWindow)
 	}
 }
 
-void Engine::CheckInput(float deltaTime)
+void Engine::CheckInput(float deltaTime)				// Checks the input from the player DNT
 {
 	static float buttonDelta = 0.0f;
 
@@ -85,7 +85,6 @@ void Engine::CheckInput(float deltaTime)
 
 	if (buttonDelta < 0.0f)		buttonDelta = 0.0f;
 
-	//Brandon Johnson fix 1-28-2010:  this prevents crashing on change of focus,
 	// either for Alt-Tab or from breaking in the debugger.
 	try 
 	{
@@ -123,7 +122,7 @@ void Engine::CheckInput(float deltaTime)
 				if (buttonDelta == 0.0f)
 				{
 					OnMouseDownL(0,0);
-					buttonDelta = 0.2f;//better sensitivity? mac
+					buttonDelta = 0.2f;//better sensitivity? mac		// yes, also changed in simpengine. DNT
 				}
 			}
 		}

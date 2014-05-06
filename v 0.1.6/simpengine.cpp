@@ -5,7 +5,7 @@
 //    \:\ \ \ \\:\ \ \ \  \::\ \   \:\ \____  
 //     \:\/.:| |\:\_\ \ \  \::\ \   \:\/___/\ 
 //      \____/_/ \_____\/   \__\/    \_____\/ 
-//        by mac
+//        by mac && DNT
 
 
 #define WIN32_LEAN_AND_MEAN
@@ -32,12 +32,12 @@ void SimpleEngine::OnPrepare()
 	glLoadIdentity();
 }
 
-void SimpleEngine::OnMouseDownL(float x, float y) 
+void SimpleEngine::OnMouseDownL(float x, float y)			// Left Click fires acid DNT
 {
 	if (!gameWorld_.IsGameDone())	gameWorld_.player.FireWeapon();
 }
 
-void SimpleEngine::OnKeyDown(int nVirtKey)
+void SimpleEngine::OnKeyDown(int nVirtKey)					// module to control other keystokes DNT
 {
 	static const float MOUSE_SENSITIVITY_INCREMENT = 0.05f;
 	static const float MOUSE_SENSITIVITY_MINIMUM   = 0.05f;
@@ -60,16 +60,16 @@ void SimpleEngine::OnKeyDown(int nVirtKey)
 		
 			break;
 		
-		case VK_UP:			gameWorld_.player.speedUp   ( 2.0f);	break;
-		case VK_DOWN:		gameWorld_.player.speedUp   (-2.0f);	break;
-		case VK_RIGHT:		gameWorld_.player.speedRight( 1.0f);	break;
-		case VK_LEFT:		gameWorld_.player.speedRight(-1.0f);	break;
-		case VK_ESCAPE:		PostQuitMessage(0);									break;
-		case VK_ADD:		mouseSensitivity_ += MOUSE_SENSITIVITY_INCREMENT;
+		case VK_UP:			gameWorld_.player.speedUp   ( 2.0f);	break;				// what W does DNT
+		case VK_DOWN:		gameWorld_.player.speedUp   (-2.0f);	break;				// What S does DNT
+		case VK_RIGHT:		gameWorld_.player.speedRight( 1.0f);	break;				// what A does DNT
+		case VK_LEFT:		gameWorld_.player.speedRight(-1.0f);	break;				// What D does DNT
+		case VK_ESCAPE:		PostQuitMessage(0);									break;	// ESC key DNT
+		case VK_ADD:		mouseSensitivity_ += MOUSE_SENSITIVITY_INCREMENT;			// What the + does
 							if (mouseSensitivity() > 2.0)
 								mouseSensitivity_ = MOUSE_SENSITIVITY_MAXIMUM;
 							break;
-		case VK_SUBTRACT:	mouseSensitivity_ -= MOUSE_SENSITIVITY_INCREMENT;
+		case VK_SUBTRACT:	mouseSensitivity_ -= MOUSE_SENSITIVITY_INCREMENT;			// What the - does
 							if (mouseSensitivity () < 0.05)	
 								mouseSensitivity_ = MOUSE_SENSITIVITY_MINIMUM;
 							break;
@@ -78,7 +78,7 @@ void SimpleEngine::OnKeyDown(int nVirtKey)
 	else if ((nVirtKey) == VK_ESCAPE)	PostQuitMessage(0);
 }
 
-void SimpleEngine::OnMouseMove(int deltaX, int deltaY)
+void SimpleEngine::OnMouseMove(int deltaX, int deltaY)								// moving the mouse moves screen DNT
 {
 	if (!gameWorld_.IsGameDone())
 	{
@@ -89,8 +89,7 @@ void SimpleEngine::OnMouseMove(int deltaX, int deltaY)
 
 void SimpleEngine::OnMouseMove(int x, int y, int centerX, int centerY)
 {
-	static const float MOUSE_SENSITIVITY_FACTOR = 0.2f; 
-							//Why?  I guess 1.0 was too much!
+	static const float MOUSE_SENSITIVITY_FACTOR = 0.2f;		// 1.0f is too much to start with, it can be incremented by player
 	static float oldX;
 	static float oldY;
 

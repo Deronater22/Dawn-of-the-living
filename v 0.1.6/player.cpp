@@ -6,7 +6,7 @@
 //    \:\ \ \ \\:\ \ \ \  \::\ \   \:\ \____  
 //     \:\/.:| |\:\_\ \ \  \::\ \   \:\/___/\ 
 //      \____/_/ \_____\/   \__\/    \_____\/ 
-//        by mac
+//        by mac && DNT
 
 
 /************************************************************
@@ -14,7 +14,7 @@
 	PLAYER.H
 
 	The Player class
-	Description: player class implementation mac 4/5/14
+	Description: player class implementation mac && DNT 4/5/14
 
 	Adapted By DOTL DEV Team
 
@@ -53,7 +53,7 @@ void Player::Animate(float deltaTime)
 	 if (velocity().Length() > 0.0)
 		 acceleration_ = -velocity() * FRICTION;
 
-	 //Limit velocity to a maximum of 15.0f in magnitude?
+	 //Limit velocity to a maximum of 15.0f in magnitude
 	 if (velocity().Length() > MAX_SPEED)
 		 velocity_ = velocity().normalized()*MAX_SPEED;
 
@@ -89,7 +89,7 @@ void Player::OnCollision(Object *collisionObject)
 			= ((Terrain*)collisionObject)->GetHeight  (position().x(), 
 														position().z()) 
 					+ size();
-		setElevation(position().y()+ 1 ); //+one to keep player from getting stuck
+		setElevation(position().y()+ 1 ); //+1 to keep player from getting stuck
 	}
 	else if (typeid(*collisionObject) == typeid(ShemanEnemy) || typeid(*collisionObject) == typeid(BruteEnemy) 
 		|| typeid(*collisionObject)== typeid(MS3DMonster))//fixed collision with player mac 4/3/14
@@ -99,7 +99,7 @@ void Player::OnCollision(Object *collisionObject)
 	    _health-=0.001f;//is player taking damage? mac 4/7/14
 		world_->getGui().updateHeath(0.001f);
 		if (velocity().z() > 0.0) velocity_ = NULL_VECTOR; 
-		position_.z()= position().z() - 1;//push player back from enemies mac 4/3/14
+		position_.z()= position().z() - 1;//push player back from enemies mac 4/3/14 (This needs to be in a direction directly away from enemy, not z dir  DNT)
 		
 
 	}
