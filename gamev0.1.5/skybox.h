@@ -1,9 +1,6 @@
 #ifndef SKYBOX_H
 #define SKYBOX_H
 
-//#define WIN32_LEAN_AND_MEAN
-//#define WIN32_EXTRA_LEAN
-
 /*
 	skybox.h
 	

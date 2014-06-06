@@ -5,19 +5,28 @@
 *****************************************************************************/
 #include "Particles.h"
 #include "texture.h"
-#include"FRAND.h"
+#include "FRAND.h"
 
 
-extern const lcgl::worldCoord SAND_P_VELOCITY;
-extern const lcgl::worldCoord VELOCITY_VARIATION;
-extern const float SAND_GRAIN_SIZE;
+extern const lcgl::worldCoord  SAND_P_VELOCITY;
+extern const lcgl::worldCoord  VELOCITY_VARIATION;
+extern const float             SAND_GRAIN_SIZE;
 
 
 using namespace lcgl;
 
 class Sandstorm : public ParticleSystem
 {
+
+
+#ifdef FAST_CPU//less particles for slower processors mac 4/22/14
+
 	enum{GRAINS_PER_SEC = 800};
+#else
+
+	enum{GRAINS_PER_SEC = 250};
+#endif
+
 	
 public:
 	Sandstorm(int maxParticles, const worldCoord& origin, 
@@ -28,7 +37,7 @@ public:
 	void  Render();
 
 	static float Frand(int x);
-	inline static float Frand(){return FRAND;};
+	static float Frand(){return FRAND;};
 
 	void  InitializeSystem();
 

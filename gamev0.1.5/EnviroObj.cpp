@@ -25,8 +25,8 @@ using namespace lcgl;
 EnviroObj::EnviroObj()
 {
 }
-EnviroObj::EnviroObj( Texture2D& enviroObj, const char* string):enviroObj_(enviroObj),
-size_(DEFAULT_SIZE)
+EnviroObj::EnviroObj( Texture2D& enviroObj, const char* string):
+enviroObj_(enviroObj),size_(DEFAULT_SIZE)
 {
 
 	fileLocation_ = new char[MAX_CHARS];//dynamically allocate the file's location
@@ -39,7 +39,8 @@ size_(DEFAULT_SIZE)
 
 
 	enviroObj_.load (fileLocation_, GL_NEAREST, SOIL_LOAD_RGBA, true, BLACK);  //make Black transparent
-	enviroObj_.repeat(); 
+	enviroObj_.repeat();
+	enviroObj.buildMipmaps();
 
 }
 
@@ -91,7 +92,7 @@ void EnviroObj::render(const worldCoord& pos)const//render a billboarded object 
 
 }
 
-std::vector<worldCoord>& EnviroObj::getVector()
+const std::vector<worldCoord>& EnviroObj::getVector()
 { 
 	return locations_;  
 }

@@ -11,14 +11,18 @@
 #include "Menu.h"
 #include "worldCoord.h"
 
+
 const int WINDOW_HI = 800, WINDOW_WID = 600;//window parameters
+
 
 using namespace lcgl;
 
 
-Menu::Menu(void):pause_menu("Arial", 30),info_page("Arial", 30),info_font("Arial",20)
+Menu::Menu(void):pause_menu("Arial", 30)
+				,info_page ("Arial", 30)
+				,info_font ("Arial", 20)
 {
-	pauseIcon_.load ("bill/DOTL.bmp");//load the pause menu icon here mac 4/16/14
+	pauseIcon_.load ("bill/biopause.jpg");//load the pause menu icon here mac 4/16/14
 	info_icon.load("bill/ebs.jpg");
 }
 
@@ -28,34 +32,32 @@ Menu::~Menu(void)
 void Menu::drawPauseIcon()const //draws the icon for spitting acid mac 4/5/14
 {
 
+	
+
 	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
 	pauseIcon_.activate();
 
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
+	glMatrixMode(GL_PROJECTION);glPushMatrix();
 	glLoadIdentity();
 
-	gluOrtho2D(0.0, WINDOW_HI, WINDOW_WID, 0.0);
+	gluOrtho2D(0.0, WINDOW_HI, WINDOW_WID, 0.0f);
 	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glDisable(GL_CULL_FACE);
-	glClear(GL_DEPTH_BUFFER_BIT);
+
 
 	glColor3fv(GREY);
 	glBegin(GL_QUADS);//draw points for menu icons mac 4/16/14
 
 	//don't mess with this order for future icons mac 4/16/14
-	glTexCoord2f(0.0,1.0); glVertex3f(0.0, 0.0,-0.994);//top left  DONE
-	glTexCoord2f(0.0,0.0); glVertex3f(0.0, 600.0,-0.994);//bottom left
-	glTexCoord2f(1.0,0.0); glVertex3f(800.0, 600.0,-0.994);//bottom right
-	glTexCoord2f(1.0,1.0); glVertex3f(800.0, 0.0,-0.994);//top right DONE
+	glTexCoord2f(0.0,1.0); glVertex3f(0.0f, 0.0f,-0.994f);//top left  DONE
+	glTexCoord2f(0.0,0.0); glVertex3f(0.0f, 600.0f,-0.994f);//bottom left
+	glTexCoord2f(1.0,0.0); glVertex3f(800.0f, 600.0f,-0.994f);//bottom right
+	glTexCoord2f(1.0,1.0); glVertex3f(800.0f, 0.0f,-0.994f);//top right DONE
 
 	glEnd();
 
 	// Making sure we can render 3d again
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
+	glMatrixMode(GL_PROJECTION);glPopMatrix();
+	glMatrixMode(GL_MODELVIEW) ;glPopMatrix();
 	glDisable(GL_TEXTURE_2D); //disable texture so we do not mess up our scene
 
 
@@ -68,15 +70,12 @@ void Menu::drawInfoIcon()const //draws the icon for spitting acid mac 4/5/14
 	glEnable(GL_TEXTURE_2D);  //make sure we can render the texture
 	info_icon.activate();
 
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
+	glMatrixMode(GL_PROJECTION);glPushMatrix();
 	glLoadIdentity();
 
-	gluOrtho2D(0.0, WINDOW_HI, WINDOW_WID, 0.0);
+	gluOrtho2D(0.0, WINDOW_HI, WINDOW_WID, 0.0f);
 	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glDisable(GL_CULL_FACE);
-	glClear(GL_DEPTH_BUFFER_BIT);
+
 
 #ifdef Debug //debugging for points only
 	glDisable(GL_TEXTURE_2D);
@@ -88,18 +87,17 @@ void Menu::drawInfoIcon()const //draws the icon for spitting acid mac 4/5/14
 	glBegin(GL_QUADS);//draw points for menu icons mac 4/16/14
 #endif
 	//don't mess with this order for future icons mac 4/16/14
-	glTexCoord2f(0.0,1.0); glVertex3f(0.0, 0.0,-0.9);//top left  DONE
-	glTexCoord2f(0.0,0.0); glVertex3f(0.0, 600.0,-0.9);//bottom left
-	glTexCoord2f(1.0,0.0); glVertex3f(800.0, 600.0,-0.9);//bottom right
-	glTexCoord2f(1.0,1.0); glVertex3f(800.0, 0.0,-0.9);//top right DONE
+	glTexCoord2f(0.0,1.0); glVertex3f(0.0f, 0.0f,-0.9f);//top left  DONE
+	glTexCoord2f(0.0,0.0); glVertex3f(0.0f, 600.0f,-0.9f);//bottom left
+	glTexCoord2f(1.0,0.0); glVertex3f(800.0f, 600.0f,-0.9f);//bottom right
+	glTexCoord2f(1.0,1.0); glVertex3f(800.0f, 0.0f,-0.9f);//top right DONE
 
 
 	glEnd();
 
 	// Making sure we can render 3d again
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
+	glMatrixMode(GL_PROJECTION);glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);glPopMatrix ();
 	glDisable(GL_TEXTURE_2D); //disable texture so we do not mess up our scene
 
 
